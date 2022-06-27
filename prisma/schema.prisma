@@ -1,0 +1,71 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+  user              user    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId], map: "account_userId_fkey")
+}
+
+model session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         user     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId], map: "session_userId_fkey")
+}
+
+model taloes {
+  idtalao     Int     @id @default(autoincrement())
+  talao       String? @unique(map: "talao_UNIQUE")
+  data        String?
+  clientid    String?
+  tel         String?
+  produtoid   String?
+  numeracao   String?
+  descricao   String? @db.VarChar(500)
+  obs         String? @db.VarChar(500)
+  recebidopor String? @db.VarChar(45)
+  lojaid      String?
+}
+
+model user {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  password      String?   @db.VarChar(250)
+  isActive      String?   @default("1") @db.Char(1)
+  account       account[]
+  session       session[]
+}
+
+model verificationtoken {
+  identifier String
+  token      String   @unique(map: "verificationToken_token_key")
+  expires    DateTime
+
+  @@unique([identifier, token], map: "verificationToken_identifier_token_key")
+}
