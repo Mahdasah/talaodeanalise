@@ -1,8 +1,13 @@
 import Talao from "../../components/Talao";
 import { useSession, signIn } from "next-auth/react";
+import { useRouter } from "next/router";
 
 export default function TaloesList({ res }) {
 	const { data: session } = useSession();
+	const router = useRouter();
+	if(router.isFallback){
+		return <p>Loading...</p>
+	}
 	if (!session) {
 		return (
 			<>
