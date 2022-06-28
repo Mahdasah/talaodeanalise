@@ -13,10 +13,10 @@ export default function Home() {
 			<Link href="/taloes">
 				<button>Talões</button>
 			</Link>
-			<Link href="/criar">
+			<Link href="/taloes/criar">
 				<button>Criar Talão de Analise</button>
 			</Link>
-			<Link href="/deletar">
+			<Link href="/taloes/deletar">
 				<button>Deletar Talão de Analise</button>
 			</Link>
 		</>
