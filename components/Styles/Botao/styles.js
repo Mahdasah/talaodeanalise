@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Botao = styled.button`
 	padding: 10px;
-	background-color: #fff;
+	background-color: blue;
 	color: white;
 	border-radius: 101px;
 	&:hover {
