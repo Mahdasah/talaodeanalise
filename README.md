@@ -1,6 +1,14 @@
 # Talão de Analise de Produto!
 
-@soutovp
+## Lista de Tarefas
+
+- [x] utilizar prisma com sql
+- [x] utilizar next-auth
+- [x] página com os talões
+- [x] criar talão
+- [x] atualizar talão
+- [x] deletar talão
+- [x] migrar para o mongodb
 
 ## Atualizando para o mongodb:
 
