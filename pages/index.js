@@ -17,12 +17,6 @@ export default function Home() {
 			<Link href="/taloes/criar">
 				<Botao>Criar Talão de Analise</Botao>
 			</Link>
-			<Link href="/users">
-				<Botao>Users</Botao>
-			</Link>
-			<Link href="/users/criar">
-				<Botao>Criar User</Botao>
-			</Link>
 		</>
 	);
 }
