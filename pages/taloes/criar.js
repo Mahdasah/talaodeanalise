@@ -1,5 +1,6 @@
 import { useSession, signIn } from "next-auth/react";
 import React, { useState } from "react";
+import { Botao } from "../../components/Styles/Botao/styles";
 
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
@@ -66,7 +67,7 @@ export default function CriarTalao() {
 					loja:
 					<input onChange={handlerChange} type="text" name="loja" />
 				</label>
-				<button type="submit">Criar</button>
+				<Botao type="submit">Criar</Botao>
 			</form>
 		</>
 	);
