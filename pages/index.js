@@ -4,6 +4,7 @@ import { Botao } from "../components/Styles/Botao/styles";
 
 export default function Home() {
 
+<<<<<<< HEAD
 
     useSession({
         required: true,
@@ -24,4 +25,22 @@ export default function Home() {
             </Link>
         </>
     );
+=======
+	useSession({
+		required: true,
+		onUnauthenticated() {
+			signIn();
+		},
+	});
+	return (
+		<div className="home">
+			<Link href="/taloes">
+				<button>Talões</button>
+			</Link>
+			<Link href="/taloes/criar">
+				<button>Criar Talão de Analise</button>
+			</Link>
+		</div>
+	);
+>>>>>>> main
 }

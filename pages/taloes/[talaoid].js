@@ -1,9 +1,6 @@
 import { useSession, signIn } from "next-auth/react";
 import React, { useState } from "react";
 
-const { PrismaClient } = require("@prisma/client");
-const prisma = new PrismaClient();
-
 export default function Talaoid({ res }) {
 	const { data: session } = useSession();
 	const [values, setValues] = useState();
@@ -45,12 +42,12 @@ export default function Talaoid({ res }) {
 					/>
 				</label>
 				<label>
-					clientid:
+					cliente:
 					<input
 						onChange={handlerChange}
 						type="text"
-						name="clientid"
-						defaultValue={res[0].clientid}
+						name="cliente"
+						defaultValue={res[0].cliente}
 					/>
 				</label>
 				<label>
@@ -63,12 +60,12 @@ export default function Talaoid({ res }) {
 					/>
 				</label>
 				<label>
-					produtoid:
+					produto:
 					<input
 						onChange={handlerChange}
 						type="text"
-						name="produtoid"
-						defaultValue={res[0].produtoid}
+						name="produto"
+						defaultValue={res[0].produto}
 					/>
 				</label>
 				<label>
@@ -108,12 +105,12 @@ export default function Talaoid({ res }) {
 					/>
 				</label>
 				<label>
-					lojaid:
+					loja:
 					<input
 						onChange={handlerChange}
 						type="text"
-						name="lojaid"
-						defaultValue={res[0].lojaid}
+						name="loja"
+						defaultValue={res[0].loja}
 					/>
 				</label>
 				<button type="submit">Atualizar</button>
@@ -122,8 +119,11 @@ export default function Talaoid({ res }) {
 	);
 }
 
-export async function getServerSideProps(context) {
-	const { query } = context;
+export async function getServerSideProps({ query }) {
+	const { PrismaClient } = require("@prisma/client");
+	const prisma = new PrismaClient();
+	// const { query } = context;
+	// console.log(query);
 	if (query.talao) {
 		await prisma.taloes.update({
 			where: {
@@ -132,14 +132,14 @@ export async function getServerSideProps(context) {
 			data: {
 				talao: query.talao,
 				data: query.data,
-				clientid: query.clientid,
+				cliente: query.cliente,
 				tel: query.tel,
-				produtoid: query.produtoid,
+				produto: query.produto,
 				numeracao: query.numeracao,
 				descricao: query.descricao,
 				obs: query.obs,
 				recebidopor: query.recebidopor,
-				lojaid: query.lojaid,
+				loja: query.loja,
 			},
 		});
 		return {

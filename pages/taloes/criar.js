@@ -35,16 +35,16 @@ export default function CriarTalao() {
 					<input onChange={handlerChange} type="text" name="data" />
 				</label>
 				<label>
-					clientid:
-					<input onChange={handlerChange} type="text" name="clientid" />
+					cliente:
+					<input onChange={handlerChange} type="text" name="cliente" />
 				</label>
 				<label>
 					tel:
 					<input onChange={handlerChange} type="text" name="tel" />
 				</label>
 				<label>
-					produtoid:
-					<input onChange={handlerChange} type="text" name="produtoid" />
+					produto:
+					<input onChange={handlerChange} type="text" name="produto" />
 				</label>
 				<label>
 					numeracao:
@@ -63,8 +63,8 @@ export default function CriarTalao() {
 					<input onChange={handlerChange} type="text" name="recebidopor" />
 				</label>
 				<label>
-					lojaid:
-					<input onChange={handlerChange} type="text" name="lojaid" />
+					loja:
+					<input onChange={handlerChange} type="text" name="loja" />
 				</label>
 				<button type="submit">Criar</button>
 			</form>
@@ -72,21 +72,20 @@ export default function CriarTalao() {
 	);
 }
 
-export async function getServerSideProps(context) {
-	const { query } = context;
+export async function getServerSideProps({ query }) {
 	if (query.talao) {
 		await prisma.taloes.create({
 			data: {
 				talao: query.talao,
 				data: query.data,
-				clientid: query.clientid,
+				cliente: query.cliente,
 				tel: query.tel,
-				produtoid: query.produtoid,
+				produto: query.produto,
 				numeracao: query.numeracao,
 				descricao: query.descricao,
 				obs: query.obs,
 				recebidopor: query.recebidopor,
-				lojaid: query.lojaid,
+				loja: query.loja,
 			},
 		});
 		return {

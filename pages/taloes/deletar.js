@@ -1,5 +1,4 @@
 import { useSession, signIn } from "next-auth/react";
-import Link from "next/link";
 
 export default function TaloesList({ res }) {
 	const { data: session } = useSession();
@@ -17,33 +16,23 @@ export default function TaloesList({ res }) {
 			<form>
 				{res.map((talao, i) => {
 					return (
-						<>
+						<ul key={i}>
 							<hr />
-							<button
-								key={i}
-								type="submit"
-								name="talaoid"
-								value={talao.idtalao}>
+							<button type="submit" name="talaoid" value={talao.idtalao}>
 								X
 							</button>
-							<Link href={`/taloes/${talao.idtalao}`}>
-								<a>
-									<ul>
-										<li>idtalao: {talao.idtalao}</li>
-										<li>talao: {talao.talao}</li>
-										<li>data: {talao.data}</li>
-										<li>cliente: {talao.cliente}</li>
-										<li>tel: {talao.tel}</li>
-										<li>produto: {talao.produto}</li>
-										<li>numeracao: {talao.numeracao}</li>
-										<li>descricao: {talao.descricao}</li>
-										<li>obs: {talao.obs}</li>
-										<li>recebidopor: {talao.recebidopor}</li>
-										<li>loja: {talao.loja}</li>
-									</ul>
-								</a>
-							</Link>
-						</>
+							<li>idtalao: {talao.idtalao}</li>
+							<li>talao: {talao.talao}</li>
+							<li>data: {talao.data}</li>
+							<li>clientid: {talao.cliente}</li>
+							<li>tel: {talao.tel}</li>
+							<li>produtoid: {talao.produto}</li>
+							<li>numeracao: {talao.numeracao}</li>
+							<li>descricao: {talao.descricao}</li>
+							<li>obs: {talao.obs}</li>
+							<li>recebidopor: {talao.recebidopor}</li>
+							<li>lojaid: {talao.loja}</li>
+						</ul>
 					);
 				})}
 			</form>

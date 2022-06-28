@@ -40,14 +40,14 @@ model taloes {
   idtalao     Int     @id @default(autoincrement())
   talao       String? @unique(map: "talao_UNIQUE")
   data        String?
-  clientid    String?
   tel         String?
-  produtoid   String?
   numeracao   String?
   descricao   String? @db.VarChar(500)
   obs         String? @db.VarChar(500)
   recebidopor String? @db.VarChar(45)
-  lojaid      String?
+  cliente     String?
+  loja        String?
+  produto     String?
 }
 
 model user {
