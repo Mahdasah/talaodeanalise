@@ -1,5 +1,6 @@
 import { useSession, signIn } from "next-auth/react";
 import Link from "next/link";
+import { Botao } from "../../components/Styles/Botao/styles";
 
 export default function TaloesList({ res }) {
 	const { data: session } = useSession();
@@ -19,13 +20,14 @@ export default function TaloesList({ res }) {
 					return (
 						<>
 							<hr />
-							<button
+							<Botao
+								tipo="bad"
 								key={i}
 								type="submit"
 								name="talaoid"
 								value={talao.idtalao}>
 								X
-							</button>
+							</Botao>
 							<Link href={`/taloes/${talao.idtalao}`}>
 								<a>
 									<ul>
