@@ -6,7 +6,7 @@ export const Botao = styled.button`
 	color: black;
 	border-radius: 15px;
 	&:hover {
-		background-color: black;
+		background-color: orange;
 		color: #000;
 	}
 `;
