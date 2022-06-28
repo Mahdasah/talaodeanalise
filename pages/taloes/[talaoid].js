@@ -11,7 +11,7 @@ export default function Talaoid({ res }) {
 			[value.target.name]: value.target.value,
 		}));
 	};
-
+	console.log(first);
 	if (!session) {
 		return (
 			<>
