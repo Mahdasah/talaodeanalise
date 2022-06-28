@@ -9,4 +9,9 @@ export const Botao = styled.button`
 		background-color: white;
 		color: black;
 	}
+	${props => props.red && css`
+		color: #D13737;
+		background: none;
+		padding: 5px;
+	`};
 `;

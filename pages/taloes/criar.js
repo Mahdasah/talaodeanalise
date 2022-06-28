@@ -69,11 +69,14 @@ export default function CriarTalao() {
 					loja:
 					<Input onChange={handlerChange} type="text" name="loja" />
 				</Label>
-				<Botao type="submit">Criar</Botao>
+				<Botao $red type="submit">Criar</Botao>
 			</Formulario>
 		</>
 	);
 }
+// RED : #D13737;
+// GRAY-BLACK : #2D2D2D;
+// YELLOW : #EFE4A3;
 const Formulario = styled.form`
 	display: grid;
 	column-gap: 10px;
