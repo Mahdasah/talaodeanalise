@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const Botao = styled.button`
-	padding: 45px;
-	background-color: blue;
-	color: black;
-	border-radius: 15px;
+	padding: 5px;
+	background-color: black;
+	color: white;
+	border-radius: 5px;
 	&:hover {
-		background-color: black;
-		color: #333;
+		background-color: white;
+		color: black;
 	}
 `;
