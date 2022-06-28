@@ -1,7 +1,7 @@
 import { useSession, signIn } from "next-auth/react";
 import Link from "next/link";
-
 export default function Home() {
+
 	useSession({
 		required: true,
 		onUnauthenticated() {

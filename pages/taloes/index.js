@@ -3,6 +3,10 @@ import Link from "next/link";
 
 export default function TaloesList({ res }) {
 	const { data: session } = useSession();
+	const router = useRouter();
+	if (router.isFallback) {
+		return <p>Loading...</p>;
+	}
 	if (!session) {
 		return (
 			<>
