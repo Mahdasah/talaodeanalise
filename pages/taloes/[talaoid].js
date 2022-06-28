@@ -1,5 +1,6 @@
 import { useSession, signIn } from "next-auth/react";
 import React, { useState } from "react";
+import { Botao } from "../../components/Styles/Botao/styles";
 
 export default function Talaoid({ res }) {
 	const { data: session } = useSession();
@@ -16,7 +17,7 @@ export default function Talaoid({ res }) {
 		return (
 			<>
 				Not signed in <br />
-				<button onClick={() => signIn()}>Sign in</button>
+				<Botao onClick={() => signIn()}>Sign in</Botao>
 			</>
 		);
 	}
@@ -113,7 +114,7 @@ export default function Talaoid({ res }) {
 						defaultValue={res[0].loja}
 					/>
 				</label>
-				<button type="submit">Atualizar</button>
+				<Botao type="submit">Atualizar</Botao>
 			</form>
 		</>
 	);
