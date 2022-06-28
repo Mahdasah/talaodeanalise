@@ -69,6 +69,14 @@ export async function getServerSideProps({ query }) {
 		};
 	}
 	const data = await prisma.taloes.findMany();
+	if (data.length === 0) {
+		return {
+			redirect: {
+				permanent: false,
+				destination: "/taloes/criar",
+			},
+		};
+	}
 	return {
 		props: {
 			res: JSON.parse(JSON.stringify(data)),
