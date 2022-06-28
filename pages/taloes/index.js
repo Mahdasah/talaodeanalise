@@ -3,15 +3,12 @@ import Link from "next/link";
 import { Botao } from "../../components/Styles/Botao/styles";
 
 export default function TaloesList({ res }) {
-	const { data: session } = useSession();
-	if (!session) {
-		return (
-			<>
-				Not signed in <br />
-				<button onClick={() => signIn()}>Sign in</button>
-			</>
-		);
-	}
+	useSession({
+		required: true,
+		onUnauthenticated() {
+			signIn();
+		},
+	});
 	return (
 		<>
 			<h1>TALOES DE ANÁLISE DE PRODUTOS</h1>

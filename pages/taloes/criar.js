@@ -7,7 +7,12 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 export default function CriarTalao() {
-	const { data: session } = useSession();
+	useSession({
+		required: true,
+		onUnauthenticated() {
+			signIn();
+		},
+	});
 	const [values, setValues] = useState();
 	const handlerChange = (value) => {
 		console.log(values);
@@ -16,15 +21,6 @@ export default function CriarTalao() {
 			[value.target.name]: value.target.value,
 		}));
 	};
-
-	if (!session) {
-		return (
-			<>
-				Not signed in <br />
-				<Botao onClick={() => signIn()}>Sign in</Botao>
-			</>
-		);
-	}
 	return (
 		<>
 			<Formulario>

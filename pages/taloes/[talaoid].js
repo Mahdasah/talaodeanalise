@@ -3,7 +3,12 @@ import React, { useState } from "react";
 import { Botao } from "../../components/Styles/Botao/styles";
 
 export default function Talaoid({ res }) {
-	const { data: session } = useSession();
+	useSession({
+		required: true,
+		onUnauthenticated() {
+			signIn();
+		},
+	});
 	const [values, setValues] = useState();
 	const handlerChange = (value) => {
 		console.log(values);
@@ -12,15 +17,6 @@ export default function Talaoid({ res }) {
 			[value.target.name]: value.target.value,
 		}));
 	};
-	console.log("first");
-	if (!session) {
-		return (
-			<>
-				Not signed in <br />
-				<Botao onClick={() => signIn()}>Sign in</Botao>
-			</>
-		);
-	}
 	return (
 		<>
 			<form>

@@ -21,13 +21,6 @@ export default function Navbar() {
 						<a>Criar Talão</a>
 					</Link>
 				</li>
-				{!session && (
-					<li>
-						<Link href="#">
-							<a onClick={() => signIn()}>Sign In</a>
-						</Link>
-					</li>
-				)}
 				{session && (
 					<li>
 						<Link href="#">
