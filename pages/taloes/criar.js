@@ -19,7 +19,7 @@ export default function CriarTalao() {
 		return (
 			<>
 				Not signed in <br />
-				<button onClick={() => signIn()}>Sign in</button>
+				<Botao onClick={() => signIn()}>Sign in</Botao>
 			</>
 		);
 	}
