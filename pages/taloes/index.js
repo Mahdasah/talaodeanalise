@@ -60,7 +60,7 @@ export async function getServerSideProps({ query }) {
 	if (query.talaoid) {
 		await prisma.taloes.delete({
 			where: {
-				idtalao: parseInt(query.talaoid),
+				idtalao: query.talaoid,
 			},
 		});
 		return {
@@ -71,6 +71,7 @@ export async function getServerSideProps({ query }) {
 		};
 	}
 	const data = await prisma.taloes.findMany();
+	console.log(data);
 	if (data.length === 0) {
 		return {
 			redirect: {

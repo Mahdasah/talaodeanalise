@@ -128,7 +128,7 @@ export async function getServerSideProps({ query }) {
 	if (query.talao) {
 		await prisma.taloes.update({
 			where: {
-				idtalao: parseInt(query.talaoid),
+				idtalao: query.talaoid,
 			},
 			data: {
 				talao: query.talao,
@@ -152,7 +152,7 @@ export async function getServerSideProps({ query }) {
 	}
 	const data = await prisma.taloes.findMany({
 		where: {
-			idtalao: parseInt(query.talaoid),
+			idtalao: query.talaoid,
 		},
 	});
 	return {

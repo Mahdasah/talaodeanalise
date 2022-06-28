@@ -3,31 +3,32 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
 model account {
-  id                String  @id @default(cuid())
+  id  String  @id @default(auto()) @map("_id") @db.ObjectId
   userId            String
   type              String
   provider          String
   providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
+  refresh_token     String? @db.String
+  access_token      String? @db.String
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String? @db.Text
+  id_token          String? @db.String
   session_state     String?
   user              user    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
 
   @@unique([provider, providerAccountId])
   @@index([userId], map: "account_userId_fkey")
 }
 
 model session {
-  id           String   @id @default(cuid())
+  id  String  @id @default(auto()) @map("_id") @db.ObjectId
   sessionToken String   @unique
   userId       String
   expires      DateTime
@@ -37,35 +38,34 @@ model session {
 }
 
 model taloes {
-  idtalao     Int     @id @default(autoincrement())
+  idtalao     String  @id @default(auto()) @map("_id") @db.ObjectId
   talao       String? @unique(map: "talao_UNIQUE")
   data        String?
   tel         String?
   numeracao   String?
-  descricao   String? @db.VarChar(500)
-  obs         String? @db.VarChar(500)
-  recebidopor String? @db.VarChar(45)
+  descricao   String? @db.String
+  obs         String? @db.String
+  recebidopor String? @db.String
   cliente     String?
   loja        String?
   produto     String?
 }
 
 model user {
-  id            String    @id @default(cuid())
+ id  String  @id @default(auto()) @map("_id") @db.ObjectId
   name          String?
   email         String?   @unique
   emailVerified DateTime?
   image         String?
-  password      String?   @db.VarChar(250)
-  isActive      String?   @default("1") @db.Char(1)
+  password      String?   @db.String
+  isActive      String?   @default("1") @db.String
   account       account[]
   session       session[]
 }
 
 model verificationtoken {
+  id  String  @id @default(auto()) @map("_id") @db.ObjectId
   identifier String
   token      String   @unique(map: "verificationToken_token_key")
   expires    DateTime
-
-  @@unique([identifier, token], map: "verificationToken_identifier_token_key")
 }

@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Botao } from "../../components/Styles/Botao/styles";
 
-
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
@@ -69,7 +68,9 @@ export default function CriarTalao() {
 					loja:
 					<Input onChange={handlerChange} type="text" name="loja" />
 				</Label>
-				<Botao $red type="submit">Criar</Botao>
+				<Botao $red type="submit">
+					Criar
+				</Botao>
 			</Formulario>
 		</>
 	);
@@ -95,12 +96,11 @@ const Input = styled.input`
 	padding: 10px;
 	margin-left: 5px;
 	font-weight: 700;
-	&:focus{
+	&:focus {
 		outline: none;
-		border-bottom: 2px solid #D13737;
+		border-bottom: 2px solid #d13737;
 	}
 `;
-
 
 export async function getServerSideProps({ query }) {
 	if (query.talao) {

@@ -21,16 +21,6 @@ export default function Navbar() {
 						<a>Criar Talão</a>
 					</Link>
 				</li>
-				<li>
-					<Link href="/users">
-						<a>User</a>
-					</Link>
-				</li>
-				<li>
-					<Link href="/users/criar">
-						<a>Criar User</a>
-					</Link>
-				</li>
 				{!session && (
 					<li>
 						<Link href="#">
