@@ -9,16 +9,13 @@ export default function Home() {
 		},
 	});
 	return (
-		<>
+		<div className="home">
 			<Link href="/taloes">
 				<button>Talões</button>
 			</Link>
 			<Link href="/taloes/criar">
 				<button>Criar Talão de Analise</button>
 			</Link>
-			<Link href="/taloes/deletar">
-				<button>Deletar Talão de Analise</button>
-			</Link>
-		</>
+		</div>
 	);
 }
