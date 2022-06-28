@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const Botao = styled.button`
-	padding: 10px;
+	padding: 5px;
 	background-color: black;
-	color: white;
-	border-radius: 101px;
+	color: black;
+	border-radius: 15px;
 	&:hover {
 		background-color: black;
 		color: #000;
