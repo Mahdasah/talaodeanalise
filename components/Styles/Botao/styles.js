@@ -8,6 +8,5 @@ export const Botao = styled.button`
 	&:hover {
 		background-color: white;
 		color: violet;
-		border-radius: 10px;
 	}
 `;
