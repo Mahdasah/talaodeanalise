@@ -1,6 +1,10 @@
 import { useSession, signIn } from "next-auth/react";
 import Link from "next/link";
+import { Botao } from "../components/Styles/Botao/styles";
+
 export default function Home() {
+
+
     useSession({
         required: true,
         onUnauthenticated() {
@@ -10,13 +14,13 @@ export default function Home() {
     return (
         <>
             <Link href="/taloes">
-                <button>Talões</button>
+                <Botao>Talões</Botao>
             </Link>
             <Link href="/taloes/criar">
-                <button>Criar Talão de Analise</button>
+                <Botao>Criar Talão de Analise</Botao>
             </Link>
             <Link href="/taloes/deletar">
-                <button>Deletar Talão de Analise</button>
+				<Botao>Deletar Talão de Analise</Botao>
             </Link>
         </>
     );
