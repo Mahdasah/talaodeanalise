@@ -1,9 +1,11 @@
 import { useSession, signIn } from "next-auth/react";
+import { useState } from "react";
 import Link from "next/link";
 import { Botao } from "../../components/Styles/Botao/styles";
 import { Lista } from "../../components/Styles/talao";
 
 export default function TaloesList({ res }) {
+	const [query, setQuery] = useState("");
 	useSession({
 		required: true,
 		onUnauthenticated() {
@@ -13,10 +15,32 @@ export default function TaloesList({ res }) {
 	return (
 		<>
 			<h1 style={{textAlign:"center"}}>TALOES DE ANÁLISE DE PRODUTOS</h1>
+			<label>
+				Filtro
+				<input
+					placeholder="Filtro"
+					onChange={(e) => setQuery(e.target.value)}
+				/>
+			</label>
 			<form>
-				{res.map((talao, i) => {
-					return (
-						<>
+				{res
+					.filter((talao) => {
+						if (query === "") {
+							return talao;
+						} else if (
+							talao.talao.toLowerCase().includes(query.toLowerCase()) ||
+							talao.data.toLowerCase().includes(query.toLowerCase()) ||
+							talao.cliente.toLowerCase().includes(query.toLowerCase()) ||
+							talao.produto.toLowerCase().includes(query.toLowerCase()) ||
+							talao.descricao.toLowerCase().includes(query.toLowerCase()) ||
+							talao.loja.toLowerCase().includes(query.toLowerCase())
+						) {
+							return talao;
+						}
+					})
+					.map((talao, i) => {
+						return (
+							<>
 							<hr />
 							<Botao
 								tipo="bad"
@@ -68,9 +92,12 @@ export async function getServerSideProps({ query }) {
 			},
 		};
 	}
-	const data = await prisma.taloes.findMany();
-	// console.log(data);
-	if (data.length === 0) {
+	const data = await prisma.taloes.findMany({
+		orderBy: {
+			talao: "asc",
+		},
+	});
+	if (data === 0) {
 		return {
 			redirect: {
 				permanent: false,
