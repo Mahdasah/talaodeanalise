@@ -132,10 +132,12 @@ export async function getServerSideProps({ query }) {
 				loja: query.loja,
 			},
 		});
-		await prisma.clientes.create({
-			data: {
+		await prisma.clientes.upsert({
+			where: {
 				label: query.cliente,
 			},
+			update: { label: query.cliente },
+			create: { label: query.cliente },
 		});
 		return {
 			redirect: {
