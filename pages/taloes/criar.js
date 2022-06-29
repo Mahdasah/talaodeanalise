@@ -2,17 +2,19 @@ import { useSession, signIn } from "next-auth/react";
 import React, { useState } from "react";
 import { Formulario } from "../../components/Styles/criar";
 import { Botao } from "../../components/Styles/Botao/styles";
+import { Hint } from "react-autocomplete-hint";
 
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-export default function CriarTalao() {
+export default function CriarTalao({ res }) {
 	useSession({
 		required: true,
 		onUnauthenticated() {
 			signIn();
 		},
 	});
+	const [text, setText] = useState();
 	const [values, setValues] = useState();
 	const handlerChange = (value) => {
 		console.log(values);
@@ -21,6 +23,9 @@ export default function CriarTalao() {
 			[value.target.name]: value.target.value,
 		}));
 	};
+	console.log(res);
+	// const options = ["orange", "banana", "apple"];
+
 	return (
 		<>
 			<Formulario>
@@ -34,7 +39,15 @@ export default function CriarTalao() {
 				</label>
 				<label>
 					cliente:
-					<input onChange={handlerChange} type="text" name="cliente" />
+					<Hint options={res}>
+						<input
+							value={text}
+							onChange={(e) => {
+								setText(e.target.value);
+							}}
+							name="cliente"
+						/>
+					</Hint>
 				</label>
 				<label>
 					tel:
@@ -43,6 +56,10 @@ export default function CriarTalao() {
 				<label>
 					produto:
 					<input onChange={handlerChange} type="text" name="produto" />
+				</label>
+				<label>
+					referência:
+					<input onChange={handlerChange} type="text" name="referencia" />
 				</label>
 				<label>
 					numeração:
@@ -81,12 +98,20 @@ export async function getServerSideProps({ query }) {
 				cliente: query.cliente,
 				tel: query.tel,
 				produto: query.produto,
+				referencia: query.referencia,
 				numeracao: query.numeracao,
 				descricao: query.descricao,
 				obs: query.obs,
 				recebidopor: query.recebidopor,
 				loja: query.loja,
 			},
+		});
+		await prisma.clientes.upsert({
+			where: {
+				label: query.cliente,
+			},
+			update: { label: query.cliente },
+			create: { label: query.cliente },
 		});
 		return {
 			redirect: {
@@ -95,5 +120,10 @@ export async function getServerSideProps({ query }) {
 			},
 		};
 	}
-	return { props: {} };
+	const data = await prisma.clientes.findMany({});
+	return {
+		props: {
+			res: JSON.parse(JSON.stringify(data)),
+		},
+	};
 }

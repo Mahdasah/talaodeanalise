@@ -68,6 +68,15 @@ export default function Talaoid({ res }) {
 					/>
 				</label>
 				<label>
+					referencia:
+					<input
+						onChange={handlerChange}
+						type="text"
+						name="referencia"
+						defaultValue={res[0].referencia}
+					/>
+				</label>
+				<label>
 					numeração:
 					<input
 						onChange={handlerChange}

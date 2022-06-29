@@ -43,12 +43,13 @@ model taloes {
   data        String?
   tel         String?
   numeracao   String?
-  descricao   String? @db.String
-  obs         String? @db.String
-  recebidopor String? @db.String
+  descricao   String? 
+  obs         String? 
+  recebidopor String? 
   cliente     String?
   loja        String?
   produto     String?
+  referencia  String?
 }
 
 model user {
@@ -57,8 +58,8 @@ model user {
   email         String?   @unique
   emailVerified DateTime?
   image         String?
-  password      String?   @db.String
-  isActive      String?   @default("1") @db.String
+  password      String?   
+  isActive      String?   @default("1") 
   account       account[]
   session       session[]
 }
@@ -68,4 +69,9 @@ model verificationtoken {
   identifier String
   token      String   @unique(map: "verificationToken_token_key")
   expires    DateTime
+}
+
+model clientes{
+  idcliente String  @id @default(auto()) @map("_id") @db.ObjectId
+  label     String  @unique
 }
