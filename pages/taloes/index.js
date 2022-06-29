@@ -3,6 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Botao } from "../../components/Styles/Botao/styles";
 import { Lista } from "../../components/Styles/talao";
+import { Filtro } from "../../components/Styles/filtro";
 
 export default function TaloesList({ res }) {
 	const [query, setQuery] = useState("");
@@ -17,7 +18,7 @@ export default function TaloesList({ res }) {
 			<h1 style={{textAlign:"center"}}>TALOES DE ANÁLISE DE PRODUTOS</h1>
 			<label>
 				Filtro
-				<input
+				<Filtro
 					placeholder="Filtro"
 					onChange={(e) => setQuery(e.target.value)}
 				/>
