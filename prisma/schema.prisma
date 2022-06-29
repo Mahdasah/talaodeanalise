@@ -58,8 +58,8 @@ model user {
   email         String?   @unique
   emailVerified DateTime?
   image         String?
-  password      String?   @db.String
-  isActive      String?   @default("1") @db.String
+  password      String?   
+  isActive      String?   @default("1") 
   account       account[]
   session       session[]
 }
