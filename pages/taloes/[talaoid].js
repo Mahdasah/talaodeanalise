@@ -21,7 +21,7 @@ export default function Talaoid({ res }) {
 		<>
 			<form>
 				<label>
-					talao:
+					talão:
 					<input
 						onChange={handlerChange}
 						type="text"
@@ -66,7 +66,7 @@ export default function Talaoid({ res }) {
 					/>
 				</label>
 				<label>
-					numeracao:
+					numeração:
 					<input
 						onChange={handlerChange}
 						type="text"
@@ -75,7 +75,7 @@ export default function Talaoid({ res }) {
 					/>
 				</label>
 				<label>
-					descricao:
+					descrição:
 					<input
 						onChange={handlerChange}
 						type="text"

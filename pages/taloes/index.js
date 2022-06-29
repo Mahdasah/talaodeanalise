@@ -28,14 +28,14 @@ export default function TaloesList({ res }) {
 							<Link href={`/taloes/${talao.idtalao}`}>
 								<a>
 									<ul>
-										<li>idtalao: {talao.idtalao}</li>
-										<li>talao: {talao.talao}</li>
+										{/* <li>idtalao: {talao.idtalao}</li> */}
+										<li>talão: {talao.talao}</li>
 										<li>data: {talao.data}</li>
 										<li>cliente: {talao.cliente}</li>
 										<li>tel: {talao.tel}</li>
 										<li>produto: {talao.produto}</li>
-										<li>numeracao: {talao.numeracao}</li>
-										<li>descricao: {talao.descricao}</li>
+										<li>numeração: {talao.numeracao}</li>
+										<li>descrição: {talao.descricao}</li>
 										<li>obs: {talao.obs}</li>
 										<li>recebidopor: {talao.recebidopor}</li>
 										<li>loja: {talao.loja}</li>
@@ -68,7 +68,7 @@ export async function getServerSideProps({ query }) {
 		};
 	}
 	const data = await prisma.taloes.findMany();
-	console.log(data);
+	// console.log(data);
 	if (data.length === 0) {
 		return {
 			redirect: {

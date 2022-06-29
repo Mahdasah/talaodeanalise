@@ -25,7 +25,7 @@ export default function CriarTalao() {
 		<>
 			<Formulario>
 				<Label>
-					talao:
+					talão:
 					<Input onChange={handlerChange} type="text" name="talao" />
 				</Label>
 				<Label>
@@ -45,11 +45,11 @@ export default function CriarTalao() {
 					<Input onChange={handlerChange} type="text" name="produto" />
 				</Label>
 				<Label>
-					numeracao:
+					numeração:
 					<Input onChange={handlerChange} type="text" name="numeracao" />
 				</Label>
 				<Label>
-					descricao:
+					descrição:
 					<Input onChange={handlerChange} type="text" name="descricao" />
 				</Label>
 				<Label>
