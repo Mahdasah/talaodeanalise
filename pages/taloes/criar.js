@@ -1,8 +1,7 @@
 import { useSession, signIn } from "next-auth/react";
 import React, { useState } from "react";
-import { Botao } from "../Styles/Botao/styles";
-import { Formulario } from "../Styles/criarStyle";
-// import Botao from "../../components/Styles/Botao";
+import { Formulario } from "../../components/Styles/criar";
+import { Botao } from "../../components/Styles/Botao/styles";
 
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();

@@ -1,6 +1,6 @@
 import { useSession, signIn } from "next-auth/react";
 import Link from "next/link";
-import { Botao } from "./Styles/Botao/styles";
+import Botao from "../components/Styles/Botao"
 
 export default function Home() {
 	useSession({

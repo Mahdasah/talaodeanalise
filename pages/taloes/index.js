@@ -1,6 +1,7 @@
 import { useSession, signIn } from "next-auth/react";
 import Link from "next/link";
 import { Botao } from "../../components/Styles/Botao/styles";
+import { Lista } from "../../components/Styles/talao";
 
 export default function TaloesList({ res }) {
 	useSession({
@@ -11,7 +12,7 @@ export default function TaloesList({ res }) {
 	});
 	return (
 		<>
-			<h1>TALOES DE ANÁLISE DE PRODUTOS</h1>
+			<h1 style={{textAlign:"center"}}>TALOES DE ANÁLISE DE PRODUTOS</h1>
 			<form>
 				{res.map((talao, i) => {
 					return (
@@ -22,25 +23,25 @@ export default function TaloesList({ res }) {
 								key={i}
 								type="submit"
 								name="talaoid"
-								value={talao.idtalao}>
+								value={talao.idtalao}
+								style={{position:"absolute"}}>
 								X
 							</Botao>
 							<Link href={`/taloes/${talao.idtalao}`}>
-								<a>
-									<ul>
-										{/* <li>idtalao: {talao.idtalao}</li> */}
-										<li>talão: {talao.talao}</li>
-										<li>data: {talao.data}</li>
-										<li>cliente: {talao.cliente}</li>
-										<li>tel: {talao.tel}</li>
-										<li>produto: {talao.produto}</li>
-										<li>numeração: {talao.numeracao}</li>
-										<li>descrição: {talao.descricao}</li>
-										<li>obs: {talao.obs}</li>
-										<li>recebidopor: {talao.recebidopor}</li>
-										<li>loja: {talao.loja}</li>
-									</ul>
-								</a>
+								<Lista style={{cursor:"pointer"}}>
+									{/* <li>idtalao: {talao.idtalao}</li> */}
+									<li><p style={{margin:0}}>Data</p> <span>{talao.data}</span></li>
+									<li>{talao.talao}</li>
+									<li>Cliente: <span>{talao.cliente}</span></li>
+									<li>Tel: <span>{talao.tel}</span></li>
+									<li>Produto: <span>{talao.produto}</span></li>
+									<li>Numeração:<span>{talao.numeracao}</span></li>
+									<li>descrição: <span>{talao.descricao}</span></li>
+									<li>obs: <span>{talao.obs}</span></li>
+									<li>recebidopor: <span>{talao.recebidopor}</span></li>
+									<li>loja: <span>{talao.loja}</span></li>
+									<div></div>
+								</Lista>
 							</Link>
 						</>
 					);

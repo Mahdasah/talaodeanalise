@@ -1,6 +1,8 @@
 import { useSession, signIn } from "next-auth/react";
 import React, { useState } from "react";
 import { Botao } from "../../components/Styles/Botao/styles";
+import { Formulario } from "../../components/Styles/criar";
+
 
 export default function Talaoid({ res }) {
 	useSession({
@@ -19,16 +21,7 @@ export default function Talaoid({ res }) {
 	};
 	return (
 		<>
-			<form>
-				<label>
-					talão:
-					<input
-						onChange={handlerChange}
-						type="text"
-						name="talao"
-						defaultValue={res[0].talao}
-					/>
-				</label>
+			<Formulario>
 				<label>
 					data:
 					<input
@@ -36,6 +29,15 @@ export default function Talaoid({ res }) {
 						type="text"
 						name="data"
 						defaultValue={res[0].data}
+					/>
+				</label>
+				<label>
+					talão:
+					<input
+						onChange={handlerChange}
+						type="text"
+						name="talao"
+						defaultValue={res[0].talao}
 					/>
 				</label>
 				<label>
@@ -111,7 +113,7 @@ export default function Talaoid({ res }) {
 					/>
 				</label>
 				<Botao type="submit">Atualizar</Botao>
-			</form>
+			</Formulario>
 		</>
 	);
 }
