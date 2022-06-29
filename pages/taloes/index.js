@@ -1,8 +1,10 @@
 import { useSession, signIn } from "next-auth/react";
 import Link from "next/link";
 import { Botao } from "../../components/Styles/Botao/styles";
+import Pagination from "@etchteam/next-pagination";
 
-export default function TaloesList({ res }) {
+export default function TaloesList({ res, total }) {
+	console.log(total);
 	useSession({
 		required: true,
 		onUnauthenticated() {
@@ -46,12 +48,13 @@ export default function TaloesList({ res }) {
 					);
 				})}
 			</form>
+			<Pagination total={total} />
 		</>
 	);
 }
 
 export async function getServerSideProps({ query }) {
-	// console.log(query);
+	console.log(query);
 	const { PrismaClient } = require("@prisma/client");
 	const prisma = new PrismaClient();
 	if (query.talaoid) {
@@ -67,19 +70,72 @@ export async function getServerSideProps({ query }) {
 			},
 		};
 	}
-	const data = await prisma.taloes.findMany();
-	// console.log(data);
-	if (data.length === 0) {
+	const total = (await prisma.taloes.findMany()).length;
+	if (query.page && !query.size) {
+		const data = await prisma.taloes.findMany({
+			take: 20,
+			skip: 20 * parseInt(query.page) - 20,
+			orderBy: {
+				talao: "asc",
+			},
+		});
+		if (total === 0) {
+			return {
+				redirect: {
+					permanent: false,
+					destination: "/taloes/criar",
+				},
+			};
+		}
 		return {
-			redirect: {
-				permanent: false,
-				destination: "/taloes/criar",
+			props: {
+				res: JSON.parse(JSON.stringify(data)),
+				total: total,
+			},
+		};
+	} else if (query.page && query.size) {
+		const data = await prisma.taloes.findMany({
+			take: parseInt(query.size),
+			skip: parseInt(query.size) * parseInt(query.page) - parseInt(query.size),
+			orderBy: {
+				talao: "asc",
+			},
+		});
+		if (total === 0) {
+			return {
+				redirect: {
+					permanent: false,
+					destination: "/taloes/criar",
+				},
+			};
+		}
+		return {
+			props: {
+				res: JSON.parse(JSON.stringify(data)),
+				total: total,
+			},
+		};
+	} else {
+		const data = await prisma.taloes.findMany({
+			take: 20,
+			skip: 0,
+			orderBy: {
+				talao: "asc",
+			},
+		});
+		if (total === 0) {
+			return {
+				redirect: {
+					permanent: false,
+					destination: "/taloes/criar",
+				},
+			};
+		}
+		return {
+			props: {
+				res: JSON.parse(JSON.stringify(data)),
+				total: total,
 			},
 		};
 	}
-	return {
-		props: {
-			res: JSON.parse(JSON.stringify(data)),
-		},
-	};
 }
