@@ -58,6 +58,7 @@ export default function TaloesList({ res }) {
 											<li>cliente: {talao.cliente}</li>
 											<li>tel: {talao.tel}</li>
 											<li>produto: {talao.produto}</li>
+											<li>referência: {talao.referencia}</li>
 											<li>numeração: {talao.numeracao}</li>
 											<li>descrição: {talao.descricao}</li>
 											<li>obs: {talao.obs}</li>
