@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { Botao } from "../../components/Styles/Botao/styles";
 import { Formulario } from "../../components/Styles/criar";
 
-
 export default function Talaoid({ res }) {
 	useSession({
 		required: true,
