@@ -12,7 +12,7 @@ export default function Talaoid({ res }) {
 	});
 	const [values, setValues] = useState();
 	const handlerChange = (value) => {
-		console.log(values);
+		// console.log(values);
 		setValues((prevValue) => ({
 			...prevValue,
 			[value.target.name]: value.target.value,
@@ -129,8 +129,6 @@ export default function Talaoid({ res }) {
 export async function getServerSideProps({ query }) {
 	const { PrismaClient } = require("@prisma/client");
 	const prisma = new PrismaClient();
-	// const { query } = context;
-	// console.log(query);
 	if (query.talao) {
 		await prisma.taloes.update({
 			where: {

@@ -17,14 +17,11 @@ export default function CriarTalao({ res }) {
 	const [text, setText] = useState();
 	const [values, setValues] = useState();
 	const handlerChange = (value) => {
-		console.log(values);
 		setValues((prevValue) => ({
 			...prevValue,
 			[value.target.name]: value.target.value,
 		}));
 	};
-	console.log(res);
-	// const options = ["orange", "banana", "apple"];
 
 	return (
 		<>
@@ -42,9 +39,7 @@ export default function CriarTalao({ res }) {
 					<Hint options={res}>
 						<input
 							value={text}
-							onChange={(e) => {
-								setText(e.target.value);
-							}}
+							onChange={(e) => setText(e.target.value)}
 							name="cliente"
 						/>
 					</Hint>
@@ -81,9 +76,7 @@ export default function CriarTalao({ res }) {
 					loja:
 					<input onChange={handlerChange} type="text" name="loja" />
 				</label>
-				<Botao type="submit">
-					Criar
-				</Botao>
+				<Botao type="submit">Criar</Botao>
 			</Formulario>
 		</>
 	);
