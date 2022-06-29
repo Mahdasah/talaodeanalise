@@ -141,6 +141,7 @@ export async function getServerSideProps({ query }) {
 				cliente: query.cliente,
 				tel: query.tel,
 				produto: query.produto,
+				referencia: query.referencia,
 				numeracao: query.numeracao,
 				descricao: query.descricao,
 				obs: query.obs,
