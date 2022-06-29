@@ -1,7 +1,8 @@
 import { useSession, signIn } from "next-auth/react";
 import React, { useState } from "react";
-import styled from "styled-components";
-import { Botao } from "../../components/Styles/Botao/styles";
+import { Botao } from "../Styles/Botao/styles";
+import { Formulario } from "../Styles/criarStyle";
+// import Botao from "../../components/Styles/Botao";
 
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
@@ -24,79 +25,53 @@ export default function CriarTalao() {
 	return (
 		<>
 			<Formulario>
-				<Label>
+				<label>
 					talão:
-					<Input onChange={handlerChange} type="text" name="talao" />
-				</Label>
-				<Label>
+					<input onChange={handlerChange} type="text" name="talao" />
+				</label>
+				<label>
 					data:
-					<Input onChange={handlerChange} type="text" name="data" />
-				</Label>
-				<Label>
+					<input onChange={handlerChange} type="text" name="data" />
+				</label>
+				<label>
 					cliente:
-					<Input onChange={handlerChange} type="text" name="cliente" />
-				</Label>
-				<Label>
+					<input onChange={handlerChange} type="text" name="cliente" />
+				</label>
+				<label>
 					tel:
-					<Input onChange={handlerChange} type="text" name="tel" />
-				</Label>
-				<Label>
+					<input onChange={handlerChange} type="text" name="tel" />
+				</label>
+				<label>
 					produto:
-					<Input onChange={handlerChange} type="text" name="produto" />
-				</Label>
-				<Label>
+					<input onChange={handlerChange} type="text" name="produto" />
+				</label>
+				<label>
 					numeração:
-					<Input onChange={handlerChange} type="text" name="numeracao" />
-				</Label>
-				<Label>
+					<input onChange={handlerChange} type="text" name="numeracao" />
+				</label>
+				<label>
 					descrição:
-					<Input onChange={handlerChange} type="text" name="descricao" />
-				</Label>
-				<Label>
+					<input onChange={handlerChange} type="text" name="descricao" />
+				</label>
+				<label>
 					obs:
-					<Input onChange={handlerChange} type="text" name="obs" />
-				</Label>
-				<Label>
+					<input onChange={handlerChange} type="text" name="obs" />
+				</label>
+				<label>
 					recebidopor:
-					<Input onChange={handlerChange} type="text" name="recebidopor" />
-				</Label>
-				<Label>
+					<input onChange={handlerChange} type="text" name="recebidopor" />
+				</label>
+				<label>
 					loja:
-					<Input onChange={handlerChange} type="text" name="loja" />
-				</Label>
-				<Botao $red type="submit">
+					<input onChange={handlerChange} type="text" name="loja" />
+				</label>
+				<Botao type="submit">
 					Criar
 				</Botao>
 			</Formulario>
 		</>
 	);
 }
-// RED : #D13737;
-// GRAY-BLACK : #2D2D2D;
-// YELLOW : #EFE4A3;
-const Formulario = styled.form`
-	display: grid;
-	column-gap: 10px;
-	row-gap: 15px;
-	background-color: #efe4a3;
-	grid-template: auto auto auto auto;
-`;
-const Label = styled.label`
-	color: #2d2d2d;
-	font-weight: 700;
-`;
-const Input = styled.input`
-	background: none;
-	border: none;
-	border-bottom: 2px solid #2d2d2d;
-	padding: 10px;
-	margin-left: 5px;
-	font-weight: 700;
-	&:focus {
-		outline: none;
-		border-bottom: 2px solid #d13737;
-	}
-`;
 
 export async function getServerSideProps({ query }) {
 	if (query.talao) {
