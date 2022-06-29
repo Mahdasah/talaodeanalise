@@ -1,6 +1,6 @@
 import { useSession, signIn } from "next-auth/react";
 import Link from "next/link";
-import Botao from "../components/Styles/Botao"
+import Botao from "../components/Styles/Botao";
 
 export default function Home() {
 	useSession({
@@ -12,10 +12,10 @@ export default function Home() {
 	return (
 		<>
 			<Link href="/taloes">
-				<Botao>Talões</Botao>
+				<button>Talões</button>
 			</Link>
 			<Link href="/taloes/criar">
-				<Botao>Criar Talão de Analise</Botao>
+				<button>Criar Talão de Analise</button>
 			</Link>
 		</>
 	);

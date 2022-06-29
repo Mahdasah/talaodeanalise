@@ -20,6 +20,7 @@ export default function TaloesList({ res }) {
 				<input
 					placeholder="Filtro"
 					onChange={(e) => setQuery(e.target.value)}
+					name="filtro"
 				/>
 			</label>
 			<form>
@@ -40,11 +41,10 @@ export default function TaloesList({ res }) {
 					})
 					.map((talao, i) => {
 						return (
-							<>
+							<div key={i}>
 								<hr />
 								<Botao
 									tipo="bad"
-									key={i}
 									type="submit"
 									name="talaoid"
 									value={talao.idtalao}
@@ -89,7 +89,7 @@ export default function TaloesList({ res }) {
 										<div></div>
 									</Lista>
 								</Link>
-							</>
+							</div>
 						);
 					})}
 			</form>
