@@ -1,10 +1,10 @@
 import { useSession, signIn } from "next-auth/react";
+import { useState } from "react";
 import Link from "next/link";
 import { Botao } from "../../components/Styles/Botao/styles";
-import Pagination from "@etchteam/next-pagination";
 
-export default function TaloesList({ res, total }) {
-	console.log(total);
+export default function TaloesList({ res }) {
+	const [query, setQuery] = useState("");
 	useSession({
 		required: true,
 		onUnauthenticated() {
@@ -14,47 +14,68 @@ export default function TaloesList({ res, total }) {
 	return (
 		<>
 			<h1>TALOES DE ANÁLISE DE PRODUTOS</h1>
+			<label>
+				Filtro
+				<input
+					placeholder="Filtro"
+					onChange={(e) => setQuery(e.target.value)}
+				/>
+			</label>
 			<form>
-				{res.map((talao, i) => {
-					return (
-						<>
-							<hr />
-							<Botao
-								tipo="bad"
-								key={i}
-								type="submit"
-								name="talaoid"
-								value={talao.idtalao}>
-								X
-							</Botao>
-							<Link href={`/taloes/${talao.idtalao}`}>
-								<a>
-									<ul>
-										{/* <li>idtalao: {talao.idtalao}</li> */}
-										<li>talão: {talao.talao}</li>
-										<li>data: {talao.data}</li>
-										<li>cliente: {talao.cliente}</li>
-										<li>tel: {talao.tel}</li>
-										<li>produto: {talao.produto}</li>
-										<li>numeração: {talao.numeracao}</li>
-										<li>descrição: {talao.descricao}</li>
-										<li>obs: {talao.obs}</li>
-										<li>recebidopor: {talao.recebidopor}</li>
-										<li>loja: {talao.loja}</li>
-									</ul>
-								</a>
-							</Link>
-						</>
-					);
-				})}
+				{res
+					.filter((talao) => {
+						if (query === "") {
+							return talao;
+						} else if (
+							talao.talao.toLowerCase().includes(query.toLowerCase()) ||
+							talao.data.toLowerCase().includes(query.toLowerCase()) ||
+							talao.cliente.toLowerCase().includes(query.toLowerCase()) ||
+							talao.produto.toLowerCase().includes(query.toLowerCase()) ||
+							talao.descricao.toLowerCase().includes(query.toLowerCase()) ||
+							talao.loja.toLowerCase().includes(query.toLowerCase())
+						) {
+							return talao;
+						}
+					})
+					.map((talao, i) => {
+						return (
+							<>
+								<hr />
+								<Botao
+									tipo="bad"
+									key={i}
+									type="submit"
+									name="talaoid"
+									value={talao.idtalao}>
+									X
+								</Botao>
+								<Link href={`/taloes/${talao.idtalao}`}>
+									<a>
+										<ul>
+											{/* <li>idtalao: {talao.idtalao}</li> */}
+											<li>talão: {talao.talao}</li>
+											<li>data: {talao.data}</li>
+											<li>cliente: {talao.cliente}</li>
+											<li>tel: {talao.tel}</li>
+											<li>produto: {talao.produto}</li>
+											<li>numeração: {talao.numeracao}</li>
+											<li>descrição: {talao.descricao}</li>
+											<li>obs: {talao.obs}</li>
+											<li>recebidopor: {talao.recebidopor}</li>
+											<li>loja: {talao.loja}</li>
+										</ul>
+									</a>
+								</Link>
+							</>
+						);
+					})}
 			</form>
-			<Pagination total={total} />
 		</>
 	);
 }
 
 export async function getServerSideProps({ query }) {
-	console.log(query);
+	// console.log(query);
 	const { PrismaClient } = require("@prisma/client");
 	const prisma = new PrismaClient();
 	if (query.talaoid) {
@@ -70,72 +91,22 @@ export async function getServerSideProps({ query }) {
 			},
 		};
 	}
-	const total = (await prisma.taloes.findMany()).length;
-	if (query.page && !query.size) {
-		const data = await prisma.taloes.findMany({
-			take: 20,
-			skip: 20 * parseInt(query.page) - 20,
-			orderBy: {
-				talao: "asc",
-			},
-		});
-		if (total === 0) {
-			return {
-				redirect: {
-					permanent: false,
-					destination: "/taloes/criar",
-				},
-			};
-		}
+	const data = await prisma.taloes.findMany({
+		orderBy: {
+			talao: "asc",
+		},
+	});
+	if (data === 0) {
 		return {
-			props: {
-				res: JSON.parse(JSON.stringify(data)),
-				total: total,
-			},
-		};
-	} else if (query.page && query.size) {
-		const data = await prisma.taloes.findMany({
-			take: parseInt(query.size),
-			skip: parseInt(query.size) * parseInt(query.page) - parseInt(query.size),
-			orderBy: {
-				talao: "asc",
-			},
-		});
-		if (total === 0) {
-			return {
-				redirect: {
-					permanent: false,
-					destination: "/taloes/criar",
-				},
-			};
-		}
-		return {
-			props: {
-				res: JSON.parse(JSON.stringify(data)),
-				total: total,
-			},
-		};
-	} else {
-		const data = await prisma.taloes.findMany({
-			take: 20,
-			skip: 0,
-			orderBy: {
-				talao: "asc",
-			},
-		});
-		if (total === 0) {
-			return {
-				redirect: {
-					permanent: false,
-					destination: "/taloes/criar",
-				},
-			};
-		}
-		return {
-			props: {
-				res: JSON.parse(JSON.stringify(data)),
-				total: total,
+			redirect: {
+				permanent: false,
+				destination: "/taloes/criar",
 			},
 		};
 	}
+	return {
+		props: {
+			res: JSON.parse(JSON.stringify(data)),
+		},
+	};
 }
