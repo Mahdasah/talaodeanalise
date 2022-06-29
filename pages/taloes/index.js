@@ -30,12 +30,66 @@ export default function TaloesList({ res }) {
 						if (query === "") {
 							return talao;
 						} else if (
-							talao.talao.toLowerCase().includes(query.toLowerCase()) ||
-							talao.data.toLowerCase().includes(query.toLowerCase()) ||
-							talao.cliente.toLowerCase().includes(query.toLowerCase()) ||
-							talao.produto.toLowerCase().includes(query.toLowerCase()) ||
-							talao.descricao.toLowerCase().includes(query.toLowerCase()) ||
-							talao.loja.toLowerCase().includes(query.toLowerCase())
+							talao.talao
+								.toLowerCase()
+								.normalize("NFD")
+								.replace(/[\u0300-\u036f]/g, "")
+								.includes(
+									query
+										.toLowerCase()
+										.normalize("NFD")
+										.replace(/[\u0300-\u036f]/g, "")
+								) ||
+							talao.data
+								.toLowerCase()
+								.normalize("NFD")
+								.replace(/[\u0300-\u036f]/g, "")
+								.includes(
+									query
+										.toLowerCase()
+										.normalize("NFD")
+										.replace(/[\u0300-\u036f]/g, "")
+								) ||
+							talao.cliente
+								.toLowerCase()
+								.normalize("NFD")
+								.replace(/[\u0300-\u036f]/g, "")
+								.includes(
+									query
+										.toLowerCase()
+										.normalize("NFD")
+										.replace(/[\u0300-\u036f]/g, "")
+								) ||
+							talao.produto
+								.toLowerCase()
+								.normalize("NFD")
+								.replace(/[\u0300-\u036f]/g, "")
+								.includes(
+									query
+										.toLowerCase()
+										.normalize("NFD")
+										.replace(/[\u0300-\u036f]/g, "")
+								) ||
+							talao.descricao
+								.toLowerCase()
+								.normalize("NFD")
+								.replace(/[\u0300-\u036f]/g, "")
+								.includes(
+									query
+										.toLowerCase()
+										.normalize("NFD")
+										.replace(/[\u0300-\u036f]/g, "")
+								) ||
+							talao.loja
+								.toLowerCase()
+								.normalize("NFD")
+								.replace(/[\u0300-\u036f]/g, "")
+								.includes(
+									query
+										.toLowerCase()
+										.normalize("NFD")
+										.replace(/[\u0300-\u036f]/g, "")
+								)
 						) {
 							return talao;
 						}
