@@ -17,9 +17,9 @@ export default function TaloesList({ res }) {
 		<>
 			<h1 style={{ textAlign: "center" }}>TALOES DE ANÁLISE DE PRODUTOS</h1>
 			<label>
-				Filtro
+				Filtro:
 				<Filtro
-					placeholder="Filtro"
+					placeholder="Talão/Data/Cliente/Produto/Referência/Descrição/Loja"
 					onChange={(e) => setQuery(e.target.value)}
 					name="filtro"
 				/>
@@ -30,26 +30,8 @@ export default function TaloesList({ res }) {
 						if (query === "") {
 							return talao;
 						} else if (
-							talao.talao
-								.toLowerCase()
-								.normalize("NFD")
-								.replace(/[\u0300-\u036f]/g, "")
-								.includes(
-									query
-										.toLowerCase()
-										.normalize("NFD")
-										.replace(/[\u0300-\u036f]/g, "")
-								) ||
-							talao.data
-								.toLowerCase()
-								.normalize("NFD")
-								.replace(/[\u0300-\u036f]/g, "")
-								.includes(
-									query
-										.toLowerCase()
-										.normalize("NFD")
-										.replace(/[\u0300-\u036f]/g, "")
-								) ||
+							talao.talao.includes(query) ||
+							talao.data.includes(query) ||
 							talao.cliente
 								.toLowerCase()
 								.normalize("NFD")
@@ -70,6 +52,7 @@ export default function TaloesList({ res }) {
 										.normalize("NFD")
 										.replace(/[\u0300-\u036f]/g, "")
 								) ||
+							talao.referencia.toLowerCase().includes(query.toLowerCase()) ||
 							talao.descricao
 								.toLowerCase()
 								.normalize("NFD")
