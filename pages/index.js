@@ -12,10 +12,10 @@ export default function Home() {
 	return (
 		<>
 			<Link href="/taloes">
-				<button>Talões</button>
+				<Botao>Talões</Botao>
 			</Link>
 			<Link href="/taloes/criar">
-				<button>Criar Talão de Analise</button>
+				<Botao>Criar Talão de Analise</Botao>
 			</Link>
 		</>
 	);
