@@ -4,7 +4,7 @@ import { Botao } from "../../components/Styles/Botao/styles";
 import { Formulario } from "../../components/Styles/criar";
 import { Hint } from "react-autocomplete-hint";
 
-export default function Talaoid({ res, res2 }) {
+export default function Talaoid({ res, clientes }) {
 	useSession({
 		required: true,
 		onUnauthenticated() {
@@ -56,7 +56,7 @@ export default function Talaoid({ res, res2 }) {
 				</label>
 				<label>
 					cliente:
-					<Hint options={res2}>
+					<Hint options={clientes}>
 						<input
 							onChange={(e) => {
 								handlerChange(e);
@@ -185,7 +185,7 @@ export async function getServerSideProps({ query }) {
 	return {
 		props: {
 			res: JSON.parse(JSON.stringify(data)),
-			res2: JSON.parse(JSON.stringify(data2)),
+			clientes: JSON.parse(JSON.stringify(data2)),
 		},
 	};
 }
