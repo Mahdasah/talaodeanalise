@@ -1,9 +1,7 @@
 import { useSession, signIn } from "next-auth/react";
 import { useState } from "react";
 import Link from "next/link";
-import Botao from "../../components/Styles/Botao"
-import { Lista } from "../../components/Styles/talao";
-import { Filtro } from "../../components/Styles/filtro";
+import {Lista, Filtro, Botao} from "../../components/Styles";
 
 export default function TaloesList({ res }) {
 	useSession({

@@ -1,8 +1,7 @@
 import { useSession, signIn } from "next-auth/react";
 import React, { useState } from "react";
-import { Formulario } from "../../components/Styles/criar";
-import { Botao } from "../../components/Styles/Botao";
 import { Hint } from "react-autocomplete-hint";
+import { Formulario } from "../../components/Styles";
 
 export default function CriarTalao({ res }) {
 	useSession({
