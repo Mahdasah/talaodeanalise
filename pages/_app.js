@@ -13,3 +13,7 @@ export default function App({
 		</SessionProvider>
 	);
 }
+
+export function reportWebVitals(metric) {
+	console.log(metric);
+}

@@ -6,21 +6,22 @@ import { Lista } from "../../components/Styles/talao";
 import { Filtro } from "../../components/Styles/filtro";
 
 export default function TaloesList({ res }) {
-	const [query, setQuery] = useState("");
 	useSession({
 		required: true,
 		onUnauthenticated() {
 			signIn();
 		},
 	});
+	const [query, setQuery] = useState("");
 	return (
 		<>
 			<h1 style={{ textAlign: "center" }}>TALOES DE ANÁLISE DE PRODUTOS</h1>
 			<label>
-				Filtro
+				Filtro:
 				<Filtro
-					placeholder="Filtro"
+					placeholder="Talão/Data/Cliente/Produto/Referência/Descrição/Loja"
 					onChange={(e) => setQuery(e.target.value)}
+					name="filtro"
 				/>
 			</label>
 			<form>
@@ -29,23 +30,59 @@ export default function TaloesList({ res }) {
 						if (query === "") {
 							return talao;
 						} else if (
-							talao.talao.toLowerCase().includes(query.toLowerCase()) ||
-							talao.data.toLowerCase().includes(query.toLowerCase()) ||
-							talao.cliente.toLowerCase().includes(query.toLowerCase()) ||
-							talao.produto.toLowerCase().includes(query.toLowerCase()) ||
-							talao.descricao.toLowerCase().includes(query.toLowerCase()) ||
-							talao.loja.toLowerCase().includes(query.toLowerCase())
+							talao.talao.includes(query) ||
+							talao.data.includes(query) ||
+							talao.cliente
+								.toLowerCase()
+								.normalize("NFD")
+								.replace(/[\u0300-\u036f]/g, "")
+								.includes(
+									query
+										.toLowerCase()
+										.normalize("NFD")
+										.replace(/[\u0300-\u036f]/g, "")
+								) ||
+							talao.produto
+								.toLowerCase()
+								.normalize("NFD")
+								.replace(/[\u0300-\u036f]/g, "")
+								.includes(
+									query
+										.toLowerCase()
+										.normalize("NFD")
+										.replace(/[\u0300-\u036f]/g, "")
+								) ||
+							talao.referencia.toLowerCase().includes(query.toLowerCase()) ||
+							talao.descricao
+								.toLowerCase()
+								.normalize("NFD")
+								.replace(/[\u0300-\u036f]/g, "")
+								.includes(
+									query
+										.toLowerCase()
+										.normalize("NFD")
+										.replace(/[\u0300-\u036f]/g, "")
+								) ||
+							talao.loja
+								.toLowerCase()
+								.normalize("NFD")
+								.replace(/[\u0300-\u036f]/g, "")
+								.includes(
+									query
+										.toLowerCase()
+										.normalize("NFD")
+										.replace(/[\u0300-\u036f]/g, "")
+								)
 						) {
 							return talao;
 						}
 					})
 					.map((talao, i) => {
 						return (
-							<>
+							<div key={i}>
 								<hr />
 								<Botao
 									tipo="bad"
-									key={i}
 									type="submit"
 									name="talaoid"
 									value={talao.idtalao}
@@ -90,7 +127,7 @@ export default function TaloesList({ res }) {
 										<div></div>
 									</Lista>
 								</Link>
-							</>
+							</div>
 						);
 					})}
 			</form>
@@ -99,6 +136,7 @@ export default function TaloesList({ res }) {
 }
 
 export async function getServerSideProps({ query }) {
+	// const start = performance.now();
 	const { PrismaClient } = require("@prisma/client");
 	const prisma = new PrismaClient();
 	if (query.talaoid) {
@@ -127,6 +165,8 @@ export async function getServerSideProps({ query }) {
 			},
 		};
 	}
+	// const duration = performance.now() - start;
+	// console.log(`server${duration}`);
 	return {
 		props: {
 			res: JSON.parse(JSON.stringify(data)),

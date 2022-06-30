@@ -2,20 +2,35 @@ import { useSession, signIn } from "next-auth/react";
 import React, { useState } from "react";
 import Botao from "../../components/Styles/Botao"
 import { Formulario } from "../../components/Styles/criar";
+import { Hint } from "react-autocomplete-hint";
 
-export default function Talaoid({ res }) {
+export default function Talaoid({ res, clientes }) {
 	useSession({
 		required: true,
 		onUnauthenticated() {
 			signIn();
 		},
 	});
-	const [values, setValues] = useState();
+	const [values, setValues] = useState({
+		cliente: res[0].cliente,
+		produto: res[0].produto,
+		recebidopor: res[0].recebidopor,
+		loja: res[0].loja,
+	});
 	const handlerChange = (value) => {
-		// console.log(values);
+		// console.log(value);
+		let n = value.target.name;
+		let str = value.target.value;
+		if (["cliente", "produto", "recebidopor", "loja"].includes(n)) {
+			let arr = value.target.value.split(" ");
+			for (var i = 0; i < arr.length; i++) {
+				arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+			}
+			str = arr.join(" ");
+		}
 		setValues((prevValue) => ({
 			...prevValue,
-			[value.target.name]: value.target.value,
+			[n]: str,
 		}));
 	};
 	return (
@@ -41,12 +56,15 @@ export default function Talaoid({ res }) {
 				</label>
 				<label>
 					cliente:
-					<input
-						onChange={handlerChange}
-						type="text"
-						name="cliente"
-						defaultValue={res[0].cliente}
-					/>
+					<Hint options={clientes}>
+						<input
+							onChange={(e) => {
+								handlerChange(e);
+							}}
+							name="cliente"
+							value={values.cliente}
+						/>
+					</Hint>
 				</label>
 				<label>
 					tel:
@@ -63,7 +81,8 @@ export default function Talaoid({ res }) {
 						onChange={handlerChange}
 						type="text"
 						name="produto"
-						defaultValue={res[0].produto}
+						value={values.produto}
+						// defaultValue={res[0].produto}
 					/>
 				</label>
 				<label>
@@ -108,7 +127,8 @@ export default function Talaoid({ res }) {
 						onChange={handlerChange}
 						type="text"
 						name="recebidopor"
-						defaultValue={res[0].recebidopor}
+						value={values.recebidopor}
+						// defaultValue={res[0].recebidopor}
 					/>
 				</label>
 				<label>
@@ -117,7 +137,8 @@ export default function Talaoid({ res }) {
 						onChange={handlerChange}
 						type="text"
 						name="loja"
-						defaultValue={res[0].loja}
+						value={values.loja}
+						// defaultValue={res[0].loja}
 					/>
 				</label>
 				<Botao type="submit">Atualizar</Botao>
@@ -160,9 +181,11 @@ export async function getServerSideProps({ query }) {
 			idtalao: query.talaoid,
 		},
 	});
+	const data2 = await prisma.clientes.findMany({});
 	return {
 		props: {
 			res: JSON.parse(JSON.stringify(data)),
+			clientes: JSON.parse(JSON.stringify(data2)),
 		},
 	};
 }
