@@ -136,6 +136,7 @@ export default function TaloesList({ res }) {
 }
 
 export async function getServerSideProps({ query }) {
+	// const start = performance.now();
 	const { PrismaClient } = require("@prisma/client");
 	const prisma = new PrismaClient();
 	if (query.talaoid) {
@@ -164,6 +165,8 @@ export async function getServerSideProps({ query }) {
 			},
 		};
 	}
+	// const duration = performance.now() - start;
+	// console.log(`server${duration}`);
 	return {
 		props: {
 			res: JSON.parse(JSON.stringify(data)),
