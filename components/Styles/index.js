@@ -1,11 +1,8 @@
 import Botao from "./Botao";
-import Formulario from "./criar";
-import Filtro from "./filtro";
-import Lista from "./talao";
+import Filtro from "./Filtro";
+import Formulario from "./Formulario";
 
-export {
-    Botao, 
-    Formulario, 
-    Filtro, 
-    Lista
-};
+export{
+    Botao,
+    Filtro,
+}

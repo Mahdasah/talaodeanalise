@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Filtro = styled.input`
+const F = styled.input`
     /* border: none; */
     padding: 15px;
     border-radius: 1rem;

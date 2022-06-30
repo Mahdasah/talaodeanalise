@@ -1,7 +1,7 @@
 import { useSession, signIn } from "next-auth/react";
 import React, { useState } from "react";
 import { Hint } from "react-autocomplete-hint";
-import { Formulario, Botao } from "../../components/Styles";
+import { Botao, Formulario } from "../../components/Styles";
 
 export default function Talaoid({ res, clientes }) {
 	useSession({

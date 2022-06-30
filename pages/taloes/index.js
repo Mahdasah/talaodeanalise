@@ -1,7 +1,7 @@
 import { useSession, signIn } from "next-auth/react";
 import { useState } from "react";
 import Link from "next/link";
-import {Lista, Filtro, Botao} from "../../components/Styles";
+import {Botao, Filtro} from "../../components/Styles";
 
 export default function TaloesList({ res }) {
 	useSession({
@@ -80,6 +80,7 @@ export default function TaloesList({ res }) {
 							<div key={i}>
 								<hr />
 								<Botao
+									color="white"
 									tipo="bad"
 									type="submit"
 									name="talaoid"
@@ -88,7 +89,7 @@ export default function TaloesList({ res }) {
 									X
 								</Botao>
 								<Link href={`/taloes/${talao.idtalao}`}>
-									<Lista style={{ cursor: "pointer" }}>
+									<ul style={{ cursor: "pointer" }}>
 										{/* <li>idtalao: {talao.idtalao}</li> */}
 										<li>
 											<p style={{ margin: 0 }}>Data</p>{" "}
@@ -123,7 +124,7 @@ export default function TaloesList({ res }) {
 											loja: <span>{talao.loja}</span>
 										</li>
 										<div></div>
-									</Lista>
+									</ul>
 								</Link>
 							</div>
 						);
