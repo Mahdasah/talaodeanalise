@@ -1,18 +1,18 @@
 import styled from "styled-components";
 
 export const F = styled.input`
-    /* border: none; */
+border: none;
     padding: 15px;
-    border-radius: 1rem;
-    border: 1px solid #2D2D2D;
-    margin-left: 15px;
+    border-bottom: 2px solid #2D2D2D;
+    display: block;
+    margin: auto;
     width: 500px;
-    /* border-bottom: 2px solid #2d2d2d; */
     font-size: 1.1rem;
     font-weight: 500;
     color: #D13737;
+    text-align: center;
     &:focus{
         outline: none;
-        font-size: 1.3rem;
+        text-align: start;
     }
 `;

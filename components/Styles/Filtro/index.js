@@ -1,7 +1,7 @@
 import {F} from "./style";
 
-export default function Filtro({children}) {
+export default function Filtro(props, {children}) {
 	return (
-	<F>{children}</F>
+	<F {...props}>{children}</F>
 	);
 }

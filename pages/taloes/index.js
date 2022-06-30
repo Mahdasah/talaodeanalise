@@ -13,11 +13,10 @@ export default function TaloesList({ res }) {
 	const [query, setQuery] = useState("");
 	return (
 		<>
-			<h1 style={{ textAlign: "center" }}>TALOES DE ANÁLISE DE PRODUTOS</h1>
+			<h1 style={{ textAlign: "center", margin: 5 }}>TALOES DE ANÁLISE DE PRODUTOS</h1>
 			<label>
-				Filtro:
 				<Filtro
-					placeholder="Talão/Data/Cliente/Produto/Referência/Descrição/Loja"
+					placeholder="Pesquise aqui!"
 					onChange={(e) => setQuery(e.target.value)}
 					name="filtro"
 				/>
@@ -78,14 +77,12 @@ export default function TaloesList({ res }) {
 					.map((talao, i) => {
 						return (
 							<div key={i}>
-								<hr />
+								
 								<Botao
-									color="white"
 									tipo="bad"
 									type="submit"
 									name="talaoid"
-									value={talao.idtalao}
-									style={{ position: "absolute" }}>
+									value={talao.idtalao}>
 									X
 								</Botao>
 								<Link href={`/taloes/${talao.idtalao}`}>

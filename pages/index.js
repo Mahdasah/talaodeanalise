@@ -11,12 +11,12 @@ export default function Home() {
 	});
 	return (
 		<>
-			<Link href="/taloes">
+			{/* <Link href="/taloes">
 				<Botao color="white">Talões</Botao>
 			</Link>
 			<Link href="/taloes/criar">
 				<Botao color="white">Criar Talão de Analise</Botao>
-			</Link>
+			</Link> */}
 		</>
 	);
 }
