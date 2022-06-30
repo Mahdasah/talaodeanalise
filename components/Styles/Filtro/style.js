@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const F = styled.input`
+export const F = styled.input`
     /* border: none; */
     padding: 15px;
     border-radius: 1rem;

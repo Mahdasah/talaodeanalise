@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Formulario = styled.form`
+export const StyledFormulario = styled.form`
 	display: grid;
 	column-gap: 10px;
 	row-gap: 15px;

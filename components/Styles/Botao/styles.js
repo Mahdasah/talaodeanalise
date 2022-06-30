@@ -5,4 +5,8 @@ export const B = styled.button`
     background-color: black;
     border: 1px solid black;
     margin: 1px;
+    &:hover{
+        color: black;
+        background-color: white;
+    }
 `;

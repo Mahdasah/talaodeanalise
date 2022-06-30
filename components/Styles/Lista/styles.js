@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Lista = styled.ul`
+export const StyledLista = styled.ul`
     display: grid;
     grid-template-columns: auto auto auto auto;
     gap: 15px 15px;
@@ -10,7 +10,6 @@ export const Lista = styled.ul`
     height: auto;
     margin: auto;
     align-items: center;
-    
     li{
         list-style: none;
         text-decoration: none;

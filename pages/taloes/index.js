@@ -1,7 +1,7 @@
 import { useSession, signIn } from "next-auth/react";
 import { useState } from "react";
 import Link from "next/link";
-import {Botao, Filtro} from "../../components/Styles";
+import {Botao, Filtro, Lista} from "../../components/Styles";
 
 export default function TaloesList({ res }) {
 	useSession({
@@ -89,42 +89,44 @@ export default function TaloesList({ res }) {
 									X
 								</Botao>
 								<Link href={`/taloes/${talao.idtalao}`}>
-									<ul style={{ cursor: "pointer" }}>
-										{/* <li>idtalao: {talao.idtalao}</li> */}
-										<li>
-											<p style={{ margin: 0 }}>Data</p>{" "}
-											<span>{talao.data}</span>
-										</li>
-										<li>{talao.talao}</li>
-										<li>
-											Cliente: <span>{talao.cliente}</span>
-										</li>
-										<li>
-											Tel: <span>{talao.tel}</span>
-										</li>
-										<li>
-											Produto: <span>{talao.produto}</span>
-										</li>
-										<li>
-											Referência: <span>{talao.referencia}</span>
-										</li>
-										<li>
-											Numeração:<span>{talao.numeracao}</span>
-										</li>
-										<li>
-											descrição: <span>{talao.descricao}</span>
-										</li>
-										<li>
-											obs: <span>{talao.obs}</span>
-										</li>
-										<li>
-											recebidopor: <span>{talao.recebidopor}</span>
-										</li>
-										<li>
-											loja: <span>{talao.loja}</span>
-										</li>
-										<div></div>
-									</ul>
+									<a style={{textDecoration: "none"}}>
+										<Lista style={{ cursor: "pointer" }}>
+											{/* <li>idtalao: {talao.idtalao}</li> */}
+											<li>
+												<p style={{ margin: 0 }}>Data</p>{" "}
+												<span>{talao.data}</span>
+											</li>
+											<li>{talao.talao}</li>
+											<li>
+												Cliente: <span>{talao.cliente}</span>
+											</li>
+											<li>
+												Tel: <span>{talao.tel}</span>
+											</li>
+											<li>
+												Produto: <span>{talao.produto}</span>
+											</li>
+											<li>
+												Referência: <span>{talao.referencia}</span>
+											</li>
+											<li>
+												Numeração:<span>{talao.numeracao}</span>
+											</li>
+											<li>
+												descrição: <span>{talao.descricao}</span>
+											</li>
+											<li>
+												obs: <span>{talao.obs}</span>
+											</li>
+											<li>
+												recebidopor: <span>{talao.recebidopor}</span>
+											</li>
+											<li>
+												loja: <span>{talao.loja}</span>
+											</li>
+											<div></div>
+										</Lista>
+									</a>
 								</Link>
 							</div>
 						);
