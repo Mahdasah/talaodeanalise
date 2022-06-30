@@ -1,6 +1,6 @@
 import { useSession, signIn } from "next-auth/react";
 import React, { useState } from "react";
-import { Botao } from "../../components/Styles/Botao/styles";
+import Botao from "../../components/Styles/Botao"
 import { Formulario } from "../../components/Styles/criar";
 
 export default function Talaoid({ res }) {
