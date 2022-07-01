@@ -6,7 +6,7 @@ export default function Navbar() {
 	const { data: session } = useSession();
 	return (
 		<nav>
-			<MainMenu className={""}>
+			<Menu className={""}>
 				<li>
 					<Link href="/">
 						<a>Home</a>
@@ -29,15 +29,13 @@ export default function Navbar() {
 						</Link>
 					</li>
 				)}
-			</MainMenu>
+			</Menu>
 			<hr />
 		</nav>
 	);
 }
-const MainMenu = styled.ul`
+const Menu = styled.ul`
 	list-style: none;
-	display: grid;
-	grid-template-columns: auto auto auto auto;
 	li{
 		margin-top: auto;
 		margin-left: 0;
@@ -45,18 +43,15 @@ const MainMenu = styled.ul`
 	}
 	li a{
 		display: flex;
-		height: 200px;
-		width: 250px;
 		background-color: white;
 		border: 1px solid black;
 		text-decoration: none;
 		color: black;
-		font-size: 2rem;
 		align-items: center;
 		justify-content: center;
-		text-transform: uppercase;
-		font-weight: 700;
 		font-family: sans-serif;
+		margin: 1px;
+		padding: 5px;
 	}
 	li a:hover{
 		background-color: #2D2D2D;
