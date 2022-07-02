@@ -50,7 +50,7 @@ const Menu = styled.ul`
 		align-items: center;
 		justify-content: center;
 		font-family: sans-serif;
-		margin: 1px;
+		margin: 5px;
 		padding: 5px;
 	}
 	li a:hover{

@@ -14,7 +14,7 @@ export default function Home() {
 		<>
 			<div style={{
 				// TESTE PARA CENTRALIZAR VERTICALMENTE O MAINMENU
-				height: 1000
+				height: 0
 			}}>
 				<MainMenu>
 					<li>
@@ -54,7 +54,7 @@ const MainMenu = styled.ul`
 	}
 	li button{
 	display: flex;
-	height: 200px;
+	height: calc(25vw - 55px);
 	width: 100%;
 	background-color: white;
 	border: 1px solid black;
