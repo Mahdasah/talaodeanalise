@@ -45,7 +45,8 @@ export default function Talaoid({ res, clientes }) {
 					/>
 				</label>
 				<label>
-					talão:
+					<span>Talão Nº</span>
+					
 					<input
 						onChange={handlerChange}
 						type="text"

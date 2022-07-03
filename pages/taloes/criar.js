@@ -32,12 +32,12 @@ export default function CriarTalao({ res }) {
 		<>
 			<Formulario>
 				<label>
-					talão:
-					<input onChange={handlerChange} type="text" name="talao" />
-				</label>
-				<label>
 					data:
 					<input onChange={handlerChange} type="text" name="data" />
+				</label>
+				<label>
+					talão:
+					<input onChange={handlerChange} type="text" name="talao" />
 				</label>
 				<label>
 					cliente:

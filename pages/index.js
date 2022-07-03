@@ -1,7 +1,6 @@
 import { useSession, signIn } from "next-auth/react";
 import Link from "next/link";
-import styled from "styled-components";
-import {Botao} from "../components/Styles";
+import styled, {keyframes} from "styled-components";
 
 export default function Home() {
 	useSession({
@@ -16,7 +15,7 @@ export default function Home() {
 				// TESTE PARA CENTRALIZAR VERTICALMENTE O MAINMENU
 				height: 0
 			}}>
-				<MainMenu>
+				<MainMenu color="#EFE4A3">
 					<li>
 						<Link href="/taloes">
 							<button>Talões</button>
@@ -42,7 +41,14 @@ export default function Home() {
 		</>
 	);
 }
-const MainMenu = styled.ul`
+const breatheAnimation = keyframes`
+0% {letter-spacing: .1em; }
+50% {letter-spacing: .2em;}
+100% {letter-spacing: .1em;}
+`;
+const MainMenu = styled.ul.attrs(props => ({
+	color : props.color || "white",
+}))`
 	list-style: none;
 	display: grid;
 	grid-template-columns: repeat(2,50%);
@@ -66,11 +72,16 @@ const MainMenu = styled.ul`
 	text-transform: uppercase;
 	font-weight: 700;
 	font-family: sans-serif;
+	transition: 0.3s;
+	background-color: #EFE4A3;
 	}
 	li button:hover{
 		background-color: #2D2D2D;
-		color: #EFE4A3;
-		transition: .2s;
+		color: ${props => props.color};
+		animation-name: ${breatheAnimation};
+		animation-duration: 2s;
+		animation-iteration-count: infinite;
+		text-shadow: 0px 0px 20px black;
 	}
 	li button:active{
 		color: #D13737;

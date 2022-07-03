@@ -43,7 +43,7 @@ const Menu = styled.ul`
 	}
 	li a{
 		display: flex;
-		background-color: white;
+		background-color: #EFE4A3;
 		border: 1px solid black;
 		text-decoration: none;
 		color: black;
@@ -52,11 +52,14 @@ const Menu = styled.ul`
 		font-family: sans-serif;
 		margin: 5px;
 		padding: 5px;
+		transition: .2s;
+		text-transform: uppercase;
+		font-weight: 700;
 	}
 	li a:hover{
 		background-color: #2D2D2D;
 		color: #EFE4A3;
-		transition: .2s;
+		letter-spacing: 0.1em;
 	}
 	li a:active{
 		color: #D13737;
