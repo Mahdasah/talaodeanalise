@@ -78,16 +78,26 @@ export default function TaloesList({ res }) {
 						return (
 							<div key={i}>
 								
-								<Botao
-									tipo="bad"
+								<div style={{width: "70%", margin: "auto"}}>
+								<div style={{backgroundColor: "#2D2D2D", marginTop: 5, display: "flex", justifyContent: "end"}}>
+								<button 
+									style={{
+										backgroundColor: "#EFE4A3",
+										color: "#2D2D2D",
+										border: "none",
+										margin: 10,
+										padding: "10px 15px"
+									}}
 									type="submit"
 									name="talaoid"
 									value={talao.idtalao}>
 									X
-								</Botao>
+								</button>
+
+								</div>
 								<Link href={`/taloes/${talao.idtalao}`}>
-									<a style={{textDecoration: "none"}}>
-										<Lista style={{ cursor: "pointer" }}>
+									<a style={{textDecoration: "none", margin:0}}>
+										<Lista style={{ cursor: "pointer", marginTop:0 }}>
 											{/* <li>idtalao: {talao.idtalao}</li> */}
 											<li>
 												<p style={{ margin: 0 }}>Data</p>{" "}
@@ -125,6 +135,7 @@ export default function TaloesList({ res }) {
 										</Lista>
 									</a>
 								</Link>
+								</div>
 							</div>
 						);
 					})}

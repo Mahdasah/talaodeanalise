@@ -7,10 +7,9 @@ export const StyledLista = styled.ul`
     gap: 15px 15px;
     background-color: #EFE4A3;
     padding: 25px;
-    width: 1000px;
     height: auto;
-    margin: auto;
     align-items: center;
+    margin-top: 0;
     li{
         list-style: none;
         text-decoration: none;

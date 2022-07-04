@@ -28,7 +28,7 @@ export default function Home() {
 					</li>
 					<li>
 						<Link href="/taloes/criar">
-							<button>Talões</button>
+							<button>Criar Talão</button>
 						</Link>
 					</li>
 					<li>
