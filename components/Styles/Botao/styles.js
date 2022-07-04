@@ -5,9 +5,17 @@ const effect = keyframes`
         color: #EFE4A3;
         background-color: #2D2D2D;
     }
+    25%{
+        color: #D13737;
+        background-color: white;
+    }
     50%{
         color: #D13737;
         background-color: white;
+    }
+    75%{
+        color: #EFE4A3;
+        background-color: #2D2D2D;
     }
     100%{
         color: #EFE4A3;
@@ -15,19 +23,23 @@ const effect = keyframes`
     }
 `
 const B = styled.button`
+    box-sizing: border-box;
     color: #EFE4A3;
     background-color: #2D2D2D;
     border: 1px solid black;
     margin: 1px;
-    
+    padding: 5px;
     &:hover{
-        animation: ${effect};
-        animation-duration: 1s;
-        animation-iteration-count: infinite;
+        background-color: #EFE4A3;
+        color: #2D2D2D;
+        cursor: pointer;
     }
-    outline-color: #D13737;
     &::selection{
         border-color: #D13737;
+    }
+    &:active{
+        background-color: #D13737;
+        color: white;
     }
 `;
 

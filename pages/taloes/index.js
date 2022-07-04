@@ -121,7 +121,7 @@ export default function TaloesList({ res }) {
 											<li>
 												loja: <span>{talao.loja}</span>
 											</li>
-											<div></div>
+											<div className="textureDL"><span>Datelli</span></div>
 										</Lista>
 									</a>
 								</Link>

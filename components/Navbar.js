@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useSession, signIn, signOut } from "next-auth/react";
 import styled from "styled-components";
+import { Botao } from "./Styles";
 
 export default function Navbar() {
 	const { data: session } = useSession();
@@ -9,23 +10,23 @@ export default function Navbar() {
 			<Menu className={""}>
 				<li>
 					<Link href="/">
-						<a>Home</a>
+						<a><Botao>Home</Botao></a>
 					</Link>
 				</li>
 				<li>
 					<Link href="/taloes">
-						<a>Talões</a>
+						<a><Botao>Talões</Botao></a>
 					</Link>
 				</li>
 				<li>
 					<Link href="/taloes/criar">
-						<a>Criar Talão</a>
+					<a><Botao>Criar Talão</Botao></a>
 					</Link>
 				</li>
 				{session && (
 					<li>
 						<Link href="#">
-							<a onClick={() => signOut()}>Sign Out</a>
+							<a onClick={() => signOut()}><Botao>Sign Out</Botao></a>
 						</Link>
 					</li>
 				)}
@@ -41,7 +42,7 @@ const Menu = styled.ul`
 		margin-left: 0;
 		display: inline-block;
 	}
-	li a{
+	/* li a{
 		display: flex;
 		background-color: #EFE4A3;
 		border: 1px solid black;
@@ -55,8 +56,8 @@ const Menu = styled.ul`
 		transition: .2s;
 		text-transform: uppercase;
 		font-weight: 700;
-	}
-	li a:hover{
+	} */
+	/* li a:hover{
 		background-color: #2D2D2D;
 		color: #EFE4A3;
 		letter-spacing: 0.1em;
@@ -64,5 +65,5 @@ const Menu = styled.ul`
 	li a:active{
 		color: #D13737;
 		background-color: #EFE4A3;
-	}
+	} */
 `;

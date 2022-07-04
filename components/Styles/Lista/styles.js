@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import '../../../public/dl.png';
 
 export const StyledLista = styled.ul`
     display: grid;
@@ -80,12 +81,37 @@ export const StyledLista = styled.ul`
         grid-column-start: 4;
         grid-column-end: 6;
     }
-    div{
-        height: 200px;
-        background-color: #2D2D2D;
+    div.textureDL{
+        height: 50px;
         width: 100%;
-        display: block;
+        display: flex;
         grid-column-start: 1;
         grid-column-end: 6;
+        align-items: center;
+        span{
+            margin: auto;
+            font-weight: 700;
+            color: #2D2D2D;
+            font-size: 2em;
+        }
+        &::before{
+            content: ' ';
+            background-image: url('dl.png');
+            background-repeat: repeat;
+            background-size: 1em;
+            background-position: rotate(30deg);
+            width: 50%;
+            margin-right: 50px;
+            height: 100%;
+        }
+        &::after{
+            content: " .";
+            background-image: url('dl.png');
+            background-repeat: repeat;
+            background-size: 1em;
+            width: 50%;
+            margin-left: 50px;
+            height: 100%;
+        }
     }
 `;

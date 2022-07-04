@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import '../../../public/dl.png';
 
 export const StyledFormulario = styled.form`
     *::selection{
@@ -84,6 +85,24 @@ export const StyledFormulario = styled.form`
     }
     label:nth-child(11){
         grid-column-start: 4;
+        grid-column-end: 6;
+    }
+    div.textureDL{
+        height: 50px;
+        width: 100%;
+        display: flex;
+        grid-column-start: 1;
+        grid-column-end: 6;
+        align-items: center;
+        span{
+            margin: auto;
+            font-weight: 700;
+            color: #2D2D2D;
+            font-size: 2em;
+        }
+    }
+    button{
+        grid-column-start: 1;
         grid-column-end: 6;
     }
 `;

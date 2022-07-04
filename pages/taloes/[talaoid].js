@@ -1,7 +1,9 @@
 import { useSession, signIn } from "next-auth/react";
 import React, { useState } from "react";
 import { Hint } from "react-autocomplete-hint";
-import { Botao, Formulario } from "../../components/Styles";
+import styled from "styled-components";
+import { Botao, Formulario, Status } from "../../components/Styles";
+
 
 export default function Talaoid({ res, clientes }) {
 	useSession({
@@ -17,7 +19,6 @@ export default function Talaoid({ res, clientes }) {
 		loja: res[0].loja,
 	});
 	const handlerChange = (value) => {
-		// console.log(value);
 		let n = value.target.name;
 		let str = value.target.value;
 		if (["cliente", "produto", "recebidopor", "loja"].includes(n)) {
@@ -32,121 +33,148 @@ export default function Talaoid({ res, clientes }) {
 			[n]: str,
 		}));
 	};
+	const theme = {
+		main: ""
+	}
+	const status = {
+		name: "Status",
+		warning: "#ffb01e",
+		good: "mediumseagreen",
+		bad: "#D13737"
+	}
+	// SERÁ O TEMA DO STATUS
+	theme.main = status.bad
 	return (
 		<>
-			<Formulario>
-				<label>
-					data:
-					<input
-						onChange={handlerChange}
-						type="text"
-						name="data"
-						defaultValue={res[0].data}
-					/>
-				</label>
-				<label>
-					<span>Talão Nº</span>
-					
-					<input
-						onChange={handlerChange}
-						type="text"
-						name="talao"
-						defaultValue={res[0].talao}
-					/>
-				</label>
-				<label>
-					cliente:
-					<Hint options={clientes}>
+			<Body>
+				<h1>Talão de Análise Status: <Status theme={theme}>{status.name}</Status></h1>
+				<Formulario>
+					<label>
+						data:
 						<input
-							onChange={(e) => {
-								handlerChange(e);
-							}}
-							name="cliente"
-							value={values.cliente}
+							onChange={handlerChange}
+							type="text"
+							name="data"
+							defaultValue={res[0].data}
 						/>
-					</Hint>
-				</label>
-				<label>
-					tel:
-					<input
-						onChange={handlerChange}
-						type="text"
-						name="tel"
-						defaultValue={res[0].tel}
-					/>
-				</label>
-				<label>
-					produto:
-					<input
-						onChange={handlerChange}
-						type="text"
-						name="produto"
-						value={values.produto}
-						// defaultValue={res[0].produto}
-					/>
-				</label>
-				<label>
-					referencia:
-					<input
-						onChange={handlerChange}
-						type="text"
-						name="referencia"
-						defaultValue={res[0].referencia}
-					/>
-				</label>
-				<label>
-					numeração:
-					<input
-						onChange={handlerChange}
-						type="text"
-						name="numeracao"
-						defaultValue={res[0].numeracao}
-					/>
-				</label>
-				<label>
-					descrição:
-					<input
-						onChange={handlerChange}
-						type="text"
-						name="descricao"
-						defaultValue={res[0].descricao}
-					/>
-				</label>
-				<label>
-					obs:
-					<input
-						onChange={handlerChange}
-						type="text"
-						name="obs"
-						defaultValue={res[0].obs}
-					/>
-				</label>
-				<label>
-					recebidopor:
-					<input
-						onChange={handlerChange}
-						type="text"
-						name="recebidopor"
-						value={values.recebidopor}
-						// defaultValue={res[0].recebidopor}
-					/>
-				</label>
-				<label>
-					loja:
-					<input
-						onChange={handlerChange}
-						type="text"
-						name="loja"
-						value={values.loja}
-						// defaultValue={res[0].loja}
-					/>
-				</label>
-				<Botao type="submit">Atualizar</Botao>
-			</Formulario>
+					</label>
+					<label>
+						<span>Talão Nº</span>
+						
+						<input
+							onChange={handlerChange}
+							type="text"
+							name="talao"
+							defaultValue={res[0].talao}
+						/>
+					</label>
+					<label>
+						cliente:
+						<Hint options={clientes}>
+							<input
+								onChange={(e) => {
+									handlerChange(e);
+								}}
+								name="cliente"
+								value={values.cliente}
+							/>
+						</Hint>
+					</label>
+					<label>
+						tel:
+						<input
+							onChange={handlerChange}
+							type="text"
+							name="tel"
+							defaultValue={res[0].tel}
+						/>
+					</label>
+					<label>
+						produto:
+						<input
+							onChange={handlerChange}
+							type="text"
+							name="produto"
+							value={values.produto}
+							// defaultValue={res[0].produto}
+						/>
+					</label>
+					<label>
+						referencia:
+						<input
+							onChange={handlerChange}
+							type="text"
+							name="referencia"
+							defaultValue={res[0].referencia}
+						/>
+					</label>
+					<label>
+						numeração:
+						<input
+							onChange={handlerChange}
+							type="text"
+							name="numeracao"
+							defaultValue={res[0].numeracao}
+						/>
+					</label>
+					<label>
+						descrição:
+						<input
+							onChange={handlerChange}
+							type="text"
+							name="descricao"
+							defaultValue={res[0].descricao}
+						/>
+					</label>
+					<label>
+						obs:
+						<input
+							onChange={handlerChange}
+							type="text"
+							name="obs"
+							defaultValue={res[0].obs}
+						/>
+					</label>
+					<label>
+						recebidopor:
+						<input
+							onChange={handlerChange}
+							type="text"
+							name="recebidopor"
+							value={values.recebidopor}
+							// defaultValue={res[0].recebidopor}
+						/>
+					</label>
+					<label>
+						loja:
+						<input
+							onChange={handlerChange}
+							type="text"
+							name="loja"
+							value={values.loja}
+							// defaultValue={res[0].loja}
+						/>
+					</label>
+					<div className="textureDL"><span>Datelli</span></div>
+					<Botao type="submit">Atualizar</Botao>
+				</Formulario>
+				<h2>Fotos</h2>
+				<div>
+					<section>
+						<ul>
+							<li>
+								<img src="" alt="Sem Foto" />
+							</li>
+						</ul>
+					</section>
+				</div>
+			</Body>
 		</>
 	);
 }
-
+const Body = styled.div`
+	margin: 0 15px;
+`;
 export async function getServerSideProps({ query }) {
 	const { PrismaClient } = require("@prisma/client");
 	const prisma = new PrismaClient();
