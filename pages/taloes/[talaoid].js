@@ -160,13 +160,28 @@ export default function Talaoid({ res, clientes }) {
 				</Formulario>
 				<h2>Fotos</h2>
 				<div>
-					<section>
+					<Fotos>
 						<ul>
 							<li>
 								<img src="" alt="Sem Foto" />
 							</li>
+							<li>
+								<img src="" alt="Sem Foto" />
+							</li>
+							<li>
+								<img src="" alt="Sem Foto" />
+							</li>
+							<li>
+								<img src="" alt="Sem Foto" />
+							</li>
+							<li>
+								<img src="" alt="Sem Foto" />
+							</li>
+							<li>
+								<img src="" alt="Sem Foto" />
+							</li>
 						</ul>
-					</section>
+					</Fotos>
 				</div>
 			</Body>
 		</>
@@ -174,6 +189,30 @@ export default function Talaoid({ res, clientes }) {
 }
 const Body = styled.div`
 	margin: 0 15px;
+`;
+const Fotos = styled.section`
+	display: flex;
+	justify-content: center;
+	ul{
+		list-style: none;
+		display: grid;
+		gap: 15px;
+		grid-template-columns: auto;
+		@media only screen and (min-width: 1000px) and (max-width: 1399px) {
+			grid-template-columns: auto auto auto;
+		}
+		@media only screen and (min-width: 1400px) {
+			grid-template-columns: auto auto auto auto auto;
+		}
+		li{
+			width: 250px;
+			height: 250px;
+			background-color: aqua;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+	}
 `;
 export async function getServerSideProps({ query }) {
 	const { PrismaClient } = require("@prisma/client");

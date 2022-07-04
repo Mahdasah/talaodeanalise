@@ -8,7 +8,7 @@ export const StyledFormulario = styled.form`
     }
     box-sizing: border-box;
 	display: grid;
-	grid-template-columns: auto auto auto auto;
+	grid-template-columns: auto;
     gap: 15px 50px;
     width: 80%;
     margin: auto;
