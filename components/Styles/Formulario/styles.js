@@ -5,26 +5,25 @@ export const StyledFormulario = styled.form`
     *::selection{
         background-color: #D13737;
         color: white;
+        box-sizing: border-box;
     }
-    box-sizing: border-box;
 	display: grid;
 	grid-template-columns: auto;
-    gap: 15px 50px;
-    width: 80%;
+    gap: 1em 1em;
     margin: auto;
-    padding: 10px 50px;
+    padding: 10px 15px;
 	background-color: #efe4a3;
     label{
-        color: #2d2d2d;
+        color: #6d6d6d;
 	    font-weight: 700;
+        width: 100%;
     }
     label input{
         display: inline-block;
         background: none;
         border: none;
         border-bottom: 2px solid #2d2d2d;
-        padding: 10px;
-        margin-left: 5px;
+        padding: 10px 0;
         font-weight: 700;
         transition: .5s;
         width: 100%;
@@ -35,64 +34,61 @@ export const StyledFormulario = styled.form`
         }
     }
     label:nth-child(1){
-        color: black;
         grid-column-start: 1;
         grid-column-end: 2;
     }
     label:nth-child(2){
-        grid-column-start: 5;
-        grid-column-end: 6;
+        grid-column-start: 2;
+        grid-column-end: 3;
         text-align: end;
         input{
-            float: right;
-            text-align: center;
-            font-size: 1.1em;
+            display: block;
+            text-align: end;
             color: #D13737;
-            width: 60px;
         }
     }
     label:nth-child(3){
         grid-column-start: 1;
-        grid-column-end: 4;
+        grid-column-end: 3;
     }
     label:nth-child(4){
-        grid-column-start: 4;
-        grid-column-end: 6;
+        grid-column-start: 1;
+        grid-column-end: 3;
     }
     label:nth-child(5){
         grid-column-start: 1;
-        grid-column-end: 4;
+        grid-column-end: 3;
     }
     label:nth-child(6){
-        grid-column-start: 4;
-        grid-column-end: 5;
+        grid-column-start: 1;
+        grid-column-end: 2;
     }
     label:nth-child(7){
-        grid-column-start: 5;
-        grid-column-end: 6;
+        grid-column-start: 2;
+        grid-column-end: 3;
     }
     label:nth-child(8){
         grid-column-start: 1;
-        grid-column-end: 6;
+        grid-column-end: 3;
     }
     label:nth-child(9){
         grid-column-start: 1;
-        grid-column-end: 6;
+        grid-column-end: 3;
     }
     label:nth-child(10){
         grid-column-start: 1;
-        grid-column-end: 4;
+        grid-column-end: 2;
     }
     label:nth-child(11){
-        grid-column-start: 4;
-        grid-column-end: 6;
+        grid-column-start: 2;
+        grid-column-end: 3;
     }
     div.textureDL{
         height: 50px;
         width: 100%;
         display: flex;
         grid-column-start: 1;
-        grid-column-end: 6;
+        grid-column-end: 3;
         align-items: center;
         span{
             margin: auto;
@@ -103,6 +99,90 @@ export const StyledFormulario = styled.form`
     }
     button{
         grid-column-start: 1;
-        grid-column-end: 6;
+        grid-column-end: 3;
+    }
+    @media only screen and (min-width: 700px) and (max-width: 1099px){
+        grid-template-columns: auto auto auto;
+        label:nth-child(1){
+            grid-column-end: 2;
+        }
+        label:nth-child(2){
+            grid-column-start: 3;
+            grid-column-end: 4;
+        }
+        label:nth-child(3){
+            grid-column-end: 3;
+        }
+        label:nth-child(4){
+            grid-column-start: 3;
+            grid-column-end: 4;
+        }
+        label:nth-child(5){
+            grid-column-end: 2;
+        }
+        label:nth-child(6){
+            grid-column-start: 2;
+            grid-column-end: 3;
+        }
+        label:nth-child(7){
+            grid-column-start: 3;
+            grid-column-end: 4;
+        }
+        label:nth-child(8){
+            grid-column-end: 4;
+        }
+        label:nth-child(9){
+            grid-column-end: 4;
+        }
+        label:nth-child(11){
+            grid-column-start: 3;
+            grid-column-end: 4;
+        }
+        div.textureDL, button{
+            grid-column-end: 4;
+        }
+    }
+    @media only screen and (min-width: 1100px){
+        grid-template-columns: auto auto auto auto;
+        div.textureDL, button{
+            grid-column-end: 5;
+        }
+        label:nth-child(2){
+            grid-column-start: 4;
+            grid-column-end: 5;
+        }
+        label:nth-child(3){
+            grid-column-start: 1;
+            grid-column-end: 4;
+        }
+        label:nth-child(4){
+            grid-column-start: 4;
+            grid-column-end: 5;
+        }
+        label:nth-child(5){
+            grid-column-end: 3;
+        }
+        label:nth-child(6){
+            grid-column-start: 3;
+            grid-column-end: 4;
+        }
+        label:nth-child(7){
+            grid-column-start: 4;
+            grid-column-end: 5;
+        }
+        label:nth-child(8){
+            grid-column-end: 5;
+        }
+        label:nth-child(9){
+            grid-column-end: 5;
+        }
+        label:nth-child(10){
+            grid-column-start: 1;
+            grid-column-end: 2;
+        }
+        label:nth-child(11){
+            grid-column-start: 4;
+            grid-column-end: 5;
+        }
     }
 `;

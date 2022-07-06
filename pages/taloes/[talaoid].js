@@ -194,16 +194,12 @@ const Fotos = styled.section`
 	display: flex;
 	justify-content: center;
 	ul{
+		margin: auto;
 		list-style: none;
 		display: grid;
 		gap: 15px;
 		grid-template-columns: auto;
-		@media only screen and (min-width: 1000px) and (max-width: 1399px) {
-			grid-template-columns: auto auto auto;
-		}
-		@media only screen and (min-width: 1400px) {
-			grid-template-columns: auto auto auto auto auto;
-		}
+		padding: 0;
 		li{
 			width: 250px;
 			height: 250px;
@@ -211,6 +207,24 @@ const Fotos = styled.section`
 			display: flex;
 			align-items: center;
 			justify-content: center;
+		}
+	}
+	@media only screen and (min-width: 700px ) and ( max-width: 1099px ){
+		ul{
+			grid-template-columns: auto auto;
+		}
+	}
+	@media only screen and (min-width: 1100px ){
+		ul{
+			display: flex;
+			flex-wrap: wrap;
+			align-self: center;
+			justify-content: center;
+			margin: auto;
+			padding: 0;
+			li{
+				
+			}
 		}
 	}
 `;
