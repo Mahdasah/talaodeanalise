@@ -20,6 +20,9 @@ export default function TaloesList({ res }) {
 					placeholder="Pesquise aqui!"
 					onChange={(e) => setQuery(e.target.value)}
 					name="filtro"
+					style={{
+						margin: "15px auto"
+					}}
 				/>
 			</label>
 			<form>
@@ -77,7 +80,10 @@ export default function TaloesList({ res }) {
 					.map((talao, i) => {
 						return (
 							<div key={i}>
-								<div style={{width: "100%", margin: "auto"}}>
+								<div style={{
+									width: "100%", 
+									margin: "auto"
+								}}>
 								<TopBorder >
 								<button 
 									style={{

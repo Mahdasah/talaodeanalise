@@ -6,42 +6,96 @@ import { Botao } from "./Styles";
 export default function Navbar() {
 	const { data: session } = useSession();
 	return (
-		<nav>
-			<Menu className={""}>
+		<MenuHamburger>
+			<ul className={""}>
 				<li>
 					<Link href="/">
-						<a><Botao>Home</Botao></a>
+						<a>Home</a>
 					</Link>
 				</li>
 				<li>
 					<Link href="/taloes">
-						<a><Botao>Talões</Botao></a>
+						<a>Talões</a>
 					</Link>
 				</li>
 				<li>
 					<Link href="/taloes/criar">
-					<a><Botao>Criar Talão</Botao></a>
+					<a>Criar Talão</a>
 					</Link>
 				</li>
 				{session && (
 					<li>
 						<Link href="#">
-							<a onClick={() => signOut()}><Botao>Sign Out</Botao></a>
+							<a onClick={() => signOut()}>Sign Out</a>
 						</Link>
 					</li>
 				)}
-			</Menu>
-			<hr />
-		</nav>
+			</ul>
+		</MenuHamburger>
 	);
 }
-const Menu = styled.ul`
-	list-style: none;
-	li{
-		margin-top: auto;
-		margin-left: 0;
-		display: inline-block;
+const MenuHamburger = styled.nav`
+	z-index: 99;
+	display: none;
+	position: fixed;
+	top: 0;
+	height: 100vh;
+	width: 80%;
+	background-color: white;
+	box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+	text-align: center;
+	&:before{
+		content: 'MENU';
+		font-weight: 1000;
+		font-size: 2em;
+		font-family: sans-serif;
 	}
+	ul{
+		display: flex;
+		list-style: none;
+		flex-direction: column;
+		padding: 0;
+		li{
+			a{
+				display: block;
+				padding: 50px 0;
+				width: 100%;
+				font-size: 1.5em;
+				font-weight: 1000;
+				font-family: arial;
+				text-transform: uppercase;
+				text-decoration: none;
+				color: #2D2D2D;
+				border-bottom: 1px solid #2D2D2D;
+				&:hover{
+					background-color: #2D2D2D;
+					color: #EFE4A3;
+				}
+			}
+			
+		}
+	}
+	@media only screen and (min-width: 700px){
+		ul{
+			list-style: none;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-around;
+			a{
+				text-decoration: none;
+				font-family: sans-serif;
+				text-transform: uppercase;
+				font-weight: 1000;
+				padding: 15px;
+				color: #EFE4A3;
+				background-color: #2D2D2D;
+			}
+		}
+	}
+`;
+const Menu = styled.ul`
+
+	
 	/* li a{
 		display: flex;
 		background-color: #EFE4A3;

@@ -10,6 +10,7 @@ export const StyledLista = styled.ul`
     align-items: center;
     margin-top: 0;
     overflow: hidden;
+    margin-bottom: 30px;
     li{
         list-style: none;
         text-decoration: none;
@@ -180,6 +181,8 @@ export const StyledLista = styled.ul`
         grid-template-columns: auto auto auto auto;
         width: 80%;
         margin: auto;
+        margin-bottom: 30px;
+        padding: 1em;
         div.textureDL{
             grid-column-end: 5;
         }

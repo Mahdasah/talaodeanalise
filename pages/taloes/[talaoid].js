@@ -47,7 +47,11 @@ export default function Talaoid({ res, clientes }) {
 	return (
 		<>
 			<Body>
-				<h1>Talão de Análise Status: <Status theme={theme}>{status.name}</Status></h1>
+				<h1 style={{
+					margin: "15px 0"
+				}}>
+					Talão de Análise Status: <Status theme={theme}>{status.name}</Status>
+				</h1>
 				<Formulario>
 					<label>
 						data:
@@ -158,7 +162,11 @@ export default function Talaoid({ res, clientes }) {
 					<div className="textureDL"><span>Datelli</span></div>
 					<Botao type="submit">Atualizar</Botao>
 				</Formulario>
-				<h2>Fotos</h2>
+				<h2 style={{
+					margin: "15px 0"
+				}}>
+					Fotos
+				</h2>
 				<div>
 					<Fotos>
 						<ul>
@@ -193,6 +201,7 @@ const Body = styled.div`
 const Fotos = styled.section`
 	display: flex;
 	justify-content: center;
+	margin: 10px;
 	ul{
 		margin: auto;
 		list-style: none;
