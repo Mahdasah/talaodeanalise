@@ -6,7 +6,7 @@ border: none;
     border-bottom: 2px solid #2D2D2D;
     display: block;
     margin: auto;
-    width: 500px;
+    width: 80%;
     font-size: 1.1rem;
     font-weight: 500;
     color: #D13737;

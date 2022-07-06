@@ -2,6 +2,7 @@ import { useSession, signIn } from "next-auth/react";
 import { useState } from "react";
 import Link from "next/link";
 import {Botao, Filtro, Lista} from "../../components/Styles";
+import styled from "styled-components";
 
 export default function TaloesList({ res }) {
 	useSession({
@@ -22,8 +23,7 @@ export default function TaloesList({ res }) {
 				/>
 			</label>
 			<form>
-				{res
-					.filter((talao) => {
+				{res.filter((talao) => {
 						if (query === "") {
 							return talao;
 						} else if (
@@ -77,9 +77,8 @@ export default function TaloesList({ res }) {
 					.map((talao, i) => {
 						return (
 							<div key={i}>
-								
-								<div style={{width: "70%", margin: "auto"}}>
-								<div style={{backgroundColor: "#2D2D2D", marginTop: 5, display: "flex", justifyContent: "end"}}>
+								<div style={{width: "100%", margin: "auto"}}>
+								<TopBorder >
 								<button 
 									style={{
 										backgroundColor: "#EFE4A3",
@@ -93,8 +92,7 @@ export default function TaloesList({ res }) {
 									value={talao.idtalao}>
 									X
 								</button>
-
-								</div>
+								</TopBorder>
 								<Link href={`/taloes/${talao.idtalao}`}>
 									<a style={{textDecoration: "none", margin:0}}>
 										<Lista style={{ cursor: "pointer", marginTop:0 }}>
@@ -143,7 +141,18 @@ export default function TaloesList({ res }) {
 		</>
 	);
 }
+const TopBorder = styled.div`
+	background-color: #2D2D2D;
+	display: flex;
+	justify-content: end;
+	margin: auto;
+	padding: .5em;
+	margin-top: 5px;
+	@media only screen and (min-width: 1001px ){
+		width: 80%;
 
+	}
+`;
 export async function getServerSideProps({ query }) {
 	// const start = performance.now();
 	const { PrismaClient } = require("@prisma/client");

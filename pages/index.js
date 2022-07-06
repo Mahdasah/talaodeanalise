@@ -60,7 +60,7 @@ const MainMenu = styled.ul.attrs(props => ({
 	}
 	li button{
 	display: flex;
-	height: calc(25vw - 55px);
+	height: calc(60vw);
 	width: 100%;
 	background-color: white;
 	border: 1px solid black;
@@ -74,6 +74,10 @@ const MainMenu = styled.ul.attrs(props => ({
 	font-family: sans-serif;
 	transition: 0.3s;
 	background-color: #EFE4A3;
+	@media only screen and (min-width: 800px){
+		height: calc(24vw);
+		
+	}
 	}
 	li button:hover{
 		background-color: #2D2D2D;
