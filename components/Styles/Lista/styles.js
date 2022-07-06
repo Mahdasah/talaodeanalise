@@ -30,10 +30,6 @@ export const StyledLista = styled.ul`
     li:nth-child(1){
         grid-column-start: 1;
         grid-column-end: 2;
-        span{
-            /* margin-right: 5px; */
-            /* width: auto; */
-        }
     }
     /* NÚMERO DE TALÃO */
     li:nth-child(2){
@@ -45,10 +41,7 @@ export const StyledLista = styled.ul`
         color: #D13737;
         word-wrap: break-word;
         word-break: break-all;
-        /* text-overflow: hidden; */
-        
         text-align: end;
-        /* width: 50px; */
     }
     /* CLIENTE */
     li:nth-child(3){
