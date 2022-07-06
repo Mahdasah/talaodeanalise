@@ -2,17 +2,13 @@ import styled from "styled-components";
 import '../../../public/dl.png';
 
 export const StyledFormulario = styled.form`
-    *::selection{
-        background-color: #D13737;
-        color: white;
-        box-sizing: border-box;
-    }
 	display: grid;
 	grid-template-columns: auto;
     gap: 1em 1em;
     margin: auto;
     padding: 10px 15px;
 	background-color: #efe4a3;
+    transition: .5s;
     label{
         color: #6d6d6d;
 	    font-weight: 700;
@@ -143,6 +139,8 @@ export const StyledFormulario = styled.form`
         }
     }
     @media only screen and (min-width: 1100px){
+        box-shadow: 5px 5px 10px rgba(0,0,0,.3);
+        width: 80%;
         grid-template-columns: auto auto auto auto;
         div.textureDL, button{
             grid-column-end: 5;

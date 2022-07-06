@@ -29,6 +29,7 @@ const B = styled.button`
     border: 1px solid black;
     margin: 1px;
     padding: 5px;
+    transition: .5s;
     &:hover{
         background-color: #EFE4A3;
         color: #2D2D2D;
